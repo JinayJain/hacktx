@@ -4,10 +4,12 @@ import './styles.css'
 
 const searchKeywords = (keyword) => {
   // find all members
-  let members;
-  fetch("http://localhost:5000/members")
-        .then(res => res.text())
-        .then(res => members);
+  let senate = fetch("http://localhost:3000/api/senate/members")
+        .then(res => res.json());
+  console.log(senate);
+  senate.forEach(member => {
+    console.log(member);
+  });
 }
 
 const Searchbar = () => {
