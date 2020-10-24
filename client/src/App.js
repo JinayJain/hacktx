@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
-import logo from './logo.svg'
-import './App.css'
-import Home from './pages/Home'
+import React, { useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import Home from './pages/Home';
+import Map from './pages/Map'
+
 
 import { Switch, Redirect, Route, BrowserRouter as Router } from 'react-router-dom'
 
@@ -16,6 +18,9 @@ function App () {
           <Route path="/home">
             <Home />
           </Route>
+          <Route path="/map">
+              <Map/>
+          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -25,4 +30,4 @@ function App () {
   )
 }
 
-export default App
+export default App;
