@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 
 function Members() {
-    const  [members,setMembers]= useState([{"first":"Lamar","last":"Alexander","party":"R","state":"TN","hometown":"Maryville", "district": "5th"}]);
+    const  [members,setMembers]= useState([{"first":"Lamar","last":"Alexander","party":"R","state":"TN","hometown":"Maryville"}]);
     
     let returnParty;
     return (
@@ -44,7 +44,7 @@ const Member = ({name, state, district, hometown, party}) => {
     return (
         <div className="member-card">
             {/* <img src={image}></img> */}
-            <div className="party">{party}</div>
+            <div className={party}><h1>{party}</h1></div>
             <h2><strong>{name}</strong></h2>
             <h4><strong>State: </strong>{state}</h4>
             <h4><strong>District: </strong>{district}</h4>
