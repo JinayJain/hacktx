@@ -1,13 +1,30 @@
-.cover {
+.cover_section {
     width: 100%;
     height: 900px;
     padding: 50px;
     background-image: url('./cover.png');
 }
+.info_section {
+    width: 100%;
+    height: 900px;
+    padding: 50px;
+    background-color: #C4C4C4;
+}
+.map_section {
+    width: 100%;
+    height: 900px;
+    padding: 50px;
+    background-color: #A9A9A9;
+}
+#result_section {
+    width: 100%;
+    height: auto;
+    padding: 50px;
+    background-color: #EFEFEF;
+}
 #logo {
     margin: 200px 0 -50px 0;
 }
-
 .blueButton {
     height: 50px;
     width: 30%;
@@ -15,7 +32,11 @@
     margin-right: 25px;
     background-color: #002761;
 }
-
+Button:hover {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+}
 .redButton {
     height: 50px;
     width: 30%;
