@@ -11,7 +11,8 @@ const Home = () => {
   return (
     <Content>
         <div className="cover">
-            <img src={logo}/>
+            <img id="logo" src={logo}/>
+            <h1>The Politician Index needed to keep representatives accountable.</h1>
             <Searchbar/>
         </div>
     </Content>
