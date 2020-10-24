@@ -3,6 +3,30 @@ const { api, parseXML } = require("../api");
 
 let members;
 
+let votes = [];
+let data = [];
+let votingdata = {};
+for(k=600; k<605; k++){
+  api.get(`https://clerk.house.gov/evs/2019/roll${k}.xml`).then((res => {
+    parseXML(res.data, (err, parsed) => {
+      let bill = {'id': parsed['rollcall-vote']['vote-metadata']['legis-num'], 'title': parsed['rollcall-vote']['vote-metadata']['vote-desc']}
+      for(i=0; i<parsed['rollcall-vote']['vote-data']['recorded-vote'].length; i++) {
+        votes.push([parsed['rollcall-vote']['vote-data']['recorded-vote'][i]['legislator']['$']['name-id'], parsed['rollcall-vote']['vote-data']['recorded-vote'][i]['vote']])
+      }
+      //console.log(votes);
+      data.push({'bill': bill, 'votes': votes});
+
+    for( i=0; i<votes.length; i++) {
+      if (!(data[0].votes[i][0] in votingdata)) votingdata[data[0].votes[i][0]]=[];
+      votingdata[data[0].votes[i][0]].push({'bill': data[0].bill, 'vote': data[0].votes[i][1]});
+    }
+    console.log(votingdata);
+    });
+  }));
+  
+} 
+
+
 api.get("https://clerk.house.gov/xml/lists/MemberData.xml").then((res) => {
   parseXML(res.data, (err, data) => {
     members = data.MemberData.members.member
