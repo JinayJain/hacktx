@@ -10,6 +10,15 @@ import { Row, Col } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
+  const resultRef = React.useRef(null);
+
+  const scrollToResult = () => {
+    resultRef.current.scrollIntoView({ 
+      behavior: "smooth", 
+      block: "nearest"
+    })
+  }
+
   return (
     <Content>
         <div className="cover_section">
@@ -18,8 +27,18 @@ const Home = () => {
           <Searchbar/>
           <br/>
           <Row>
-            <Button className="blueButton" size="large" type="primary">FILTER BY REGION</Button>
-            <Button className="redButton" size="large" type="primary">BROWSE ALL DATA</Button>
+            <Button
+              className="blueButton" 
+              size="large" 
+              type="primary"
+              onClick={scrollToResult}
+            >FILTER BY REGION</Button>
+            <Button
+              className="redButton" 
+              size="large" 
+              type="primary"
+              onClick={scrollToResult}
+            >BROWSE ALL DATA</Button>
           </Row>
         </div>
         <div className="info_section">
@@ -28,7 +47,7 @@ const Home = () => {
         <div className="map_section">
           <h1>WOW! map!</h1>
         </div>
-        <div className="result_section">
+        <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
         </div>
     </Content>
