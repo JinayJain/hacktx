@@ -6,7 +6,6 @@ const searchKeywords = (keywords) => {
   let result = [];
   keywords = keywords.toLowerCase();
 
-
   // find all matching in senate
   let senate = fetch("http://localhost:8080/api/senate/members", {
               headers:{
@@ -55,6 +54,55 @@ const searchKeywords = (keywords) => {
               break;
           }
         });
+    
+    // find all matching in house
+    let house = fetch("http://localhost:8080/api/house/members", {
+        headers:{
+            "accepts":"application/json"
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+    switch(keywords) {
+      case("democrat"): 
+        data.forEach(member => {
+          // if keyword matches
+          if (member.party == "D") {
+            console.log(member);
+            result.push(member);
+          }
+        });
+        break;
+      case("republican"): 
+        data.forEach(member => {
+          // if keyword matches
+          if (member.party == "R") {
+            console.log(member);
+            result.push(member);
+          }
+        });
+        break;
+      case("independent"): 
+        data.forEach(member => {
+          // if keyword matches
+          if (member.party == "I") {
+            console.log(member);
+            result.push(member);
+          }
+        });
+        break;
+      default:
+        data.forEach(member => {
+          // if keyword matches
+          let member_string = JSON.stringify(member).toLowerCase();
+          if (member_string.includes(keywords)) {
+            console.log(member);
+            result.push(member);
+          }
+        });
+        break;
+    }
+    });
   console.log(keywords);
 }
 
