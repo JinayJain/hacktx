@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+
 import './styles.css'
 
 const searchKeywords = (keywords) => {
   let result = [];
   let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
-
   console.log(keywords_array);
 
   // find all matching in senate
