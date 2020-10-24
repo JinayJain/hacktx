@@ -7,3 +7,19 @@
 #logo {
     margin: 200px 0 -50px 0;
 }
+
+.blueButton {
+    height: 50px;
+    width: 30%;
+    margin-top: 25px;
+    margin-right: 25px;
+    background-color: #002761;
+}
+
+.redButton {
+    height: 50px;
+    width: 30%;
+    margin-top: 25px;
+    margin-right: 25px;
+    background-color: #AD0000;
+}

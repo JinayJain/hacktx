@@ -6,6 +6,7 @@ import logo from '../../logo.svg'
 
 import { Layout } from 'antd';
 import { Button } from 'antd';
+import { Row, Col } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
@@ -16,9 +17,10 @@ const Home = () => {
             <h1>The Politician Index needed to keep representatives accountable.</h1>
             <Searchbar/>
             <br/>
-            
-            <Button size="large" type="primary">FILTER BY REGION</Button>
-            <Button size="large" type="primary">BROWSE ALL DATA</Button>
+            <Row>
+              <Button className="blueButton" size="large" type="primary">FILTER BY REGION</Button>
+              <Button className="redButton" size="large" type="primary">BROWSE ALL DATA</Button>
+            </Row>
         </div>
     </Content>
   )
