@@ -24,7 +24,7 @@ function App () {
             <Home />
           </Route>
           <Route path="/map">
-              <Map/>
+            <Map/>
           </Route>
           <Route path="/">
             <Home />

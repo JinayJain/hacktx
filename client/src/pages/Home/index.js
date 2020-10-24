@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../logo.svg'
 
 import './styles.css'
+import Members from '../../components/Card/card';
 import Searchbar from '../../components/Searchbar'
 import MapComponent from '../../components/Map/MapComponent'
 
@@ -60,6 +61,7 @@ const Home = () => {
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
+          <Members/>
         </div>
     </Content>
   )
