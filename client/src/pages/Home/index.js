@@ -5,6 +5,7 @@ import './styles.css'
 import logo from '../../logo.svg'
 
 import { Layout } from 'antd';
+import { Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
@@ -14,6 +15,10 @@ const Home = () => {
             <img id="logo" src={logo}/>
             <h1>The Politician Index needed to keep representatives accountable.</h1>
             <Searchbar/>
+            <br/>
+            
+            <Button size="large" type="primary">FILTER BY REGION</Button>
+            <Button size="large" type="primary">BROWSE ALL DATA</Button>
         </div>
     </Content>
   )
