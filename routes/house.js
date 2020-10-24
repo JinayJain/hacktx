@@ -30,13 +30,13 @@ for(k=600; k<605; k++){
 api.get("https://clerk.house.gov/xml/lists/MemberData.xml").then((res) => {
   parseXML(res.data, (err, data) => {
     members = data.MemberData.members.member
-      .map((rep) => rep["member-info"])
       .map((rep) => ({
-        first: rep.firstname,
-        last: rep.lastname,
-        party: rep.party,
-        state: rep.state['$']['postal-code'],
-        hometown: rep.townname
+        first: rep['member-info'].firstname,
+        last: rep['member-info'].lastname,
+        party: rep['member-info'].party,
+        state: rep['member-info'].state['$']['postal-code'],
+        hometown: rep['member-info'].townname,
+        district: rep.statedistrict
       }));
   });
 });
