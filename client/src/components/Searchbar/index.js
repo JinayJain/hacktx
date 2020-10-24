@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Input } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import './styles.css'
 
 const searchKeywords = (keywords) => {
@@ -174,6 +175,7 @@ const Searchbar = () => {
       style={{ width: '70%' }} 
       onKeyDown={handleKeyDown}
       onChange={(e) => handleChange(e.target.value)}
+      suffix={<SearchOutlined/>}
     />
   )
 }
