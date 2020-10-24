@@ -4,7 +4,7 @@ import './styles.css'
 
 const searchKeywords = (keywords) => {
   let result = [];
-  let keywords_array = keywords.toLowerCase().split(",");
+  let keywords_array = keywords.toLowerCase().split(", ").split(",");
 
   // find all matching in senate
   let senate = fetch("http://localhost:8080/api/senate/members", {
