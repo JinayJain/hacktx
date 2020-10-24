@@ -10,6 +10,9 @@ function App () {
     <Router>
       <div>
         <Switch>
+          <Route path="/test">
+            <div>yo yo yo o</div>
+          </Route>
           <Route path="/home">
             <Home />
           </Route>
