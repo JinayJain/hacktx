@@ -73,7 +73,6 @@ const searchKeywords = (keywords) => {
             }
           });
         });
-    
     // find all matching in house
     let house = fetch("http://localhost:8080/api/house/members", {
         headers:{

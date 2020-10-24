@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Navbar from '../../components/Navbar'
-import Searchbar from '../../components/Searchbar'
-import './styles.css'
 import logo from '../../logo.svg'
+
+import './styles.css'
+import Searchbar from '../../components/Searchbar'
 
 import { Layout } from 'antd';
 import { Button } from 'antd';
@@ -11,9 +11,17 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
   const resultRef = React.useRef(null);
+  const mapRef = React.useRef(null);
 
   const scrollToResult = () => {
     resultRef.current.scrollIntoView({ 
+      behavior: "smooth", 
+      block: "nearest"
+    })
+  }
+
+  const scrollToMaps = () => {
+    mapRef.current.scrollIntoView({ 
       behavior: "smooth", 
       block: "nearest"
     })
@@ -31,7 +39,7 @@ const Home = () => {
               className="blueButton" 
               size="large" 
               type="primary"
-              onClick={scrollToResult}
+              onClick={scrollToMaps}
             >FILTER BY REGION</Button>
             <Button
               className="redButton" 
@@ -41,11 +49,12 @@ const Home = () => {
             >BROWSE ALL DATA</Button>
           </Row>
         </div>
-        <div className="info_section">
+        <div id="info_section">
           <h1>WOW! INfoRmaTiON!</h1>
         </div>
-        <div className="map_section">
+        <div id="map_section" ref={mapRef}>
           <h1>WOW! map!</h1>
+          
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
