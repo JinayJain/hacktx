@@ -1,32 +1,18 @@
-const axios = require("axios").default;
-const xml2js = require("xml2js");
+const PORT = 3001;
 
-const parser = new xml2js.Parser({ explicitArray: false });
-axios.get("https://clerk.house.gov/xml/lists/MemberData.xml").then((res) => {
-  parser.parseString(res.data, (err, parsed) => {
-    console.log(parsed.MemberData.members.member[0]);
-  });
-});
+const express = require('express');
+const cors = require('cors');
 
-axios.get("https://www.govinfo.gov/bulkdata/xml/BILLS/115/1/hjres").then((res) => {
-  parser.parseString(res.data, (err, parsed) => {
-    console.log(parsed.data.files);
-  });
-});
+const senateRouter = require('./routes/senate');
+const houseRouter = require('./routes/house');
 
-let array = [];
-for(i=600; i<700; i++){
-  axios.get(`https://clerk.house.gov/evs/2019/roll${i}.xml`).then((res => {
-    parser.parseString(res.data, (err, parsed) => {
-      console.log(parsed['rollcall-vote']['vote-metadata']['legis-num']);
-      for(i=0; i<parsed['rollcall-vote']['vote-data']['recorded-vote'].length; i++) {
-        if (parsed['rollcall-vote']['vote-data']['recorded-vote'][i]['vote'] == "Not Voting") {
+var app = express();
 
-        
-        array.push([parsed['rollcall-vote']['vote-data']['recorded-vote'][i]['legislator']['$']['name-id'], parsed['rollcall-vote']['vote-data']['recorded-vote'][i]['vote']])
-        }
-      }
-      console.log(array);
-    });
-  }));
-}
+app.use(cors());
+
+app.use('/senate', senateRouter);
+app.use('/house', houseRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+})
