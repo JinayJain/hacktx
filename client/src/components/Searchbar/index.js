@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+
 import './styles.css'
 
 const searchKeywords = (keywords) => {
   let result = [];
   let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
-
   console.log(keywords_array);
 
   // find all matching in senate
@@ -22,7 +22,7 @@ const searchKeywords = (keywords) => {
               case("democrat"): 
                 data.forEach(member => {
                   // if keyword matches
-                  if (member.party == "D") {
+                  if (member.party === "D") {
                     console.log(member);
                     result.push(member);
                   }
@@ -31,7 +31,7 @@ const searchKeywords = (keywords) => {
               case("republican"): 
                 data.forEach(member => {
                   // if keyword matches
-                  if (member.party == "R") {
+                  if (member.party === "R") {
                     console.log(member);
                     result.push(member);
                   }
@@ -40,7 +40,7 @@ const searchKeywords = (keywords) => {
               case("independent"): 
                 data.forEach(member => {
                   // if keyword matches
-                  if (member.party == "I") {
+                  if (member.party === "I") {
                     console.log(member);
                     result.push(member);
                   }
@@ -87,7 +87,7 @@ const searchKeywords = (keywords) => {
           case("democrat"): 
             data.forEach(member => {
               // if keyword matches
-              if (member.party == "D") {
+              if (member.party === "D") {
                 console.log(member);
                 result.push(member);
               }
@@ -96,7 +96,7 @@ const searchKeywords = (keywords) => {
           case("republican"): 
             data.forEach(member => {
               // if keyword matches
-              if (member.party == "R") {
+              if (member.party === "R") {
                 console.log(member);
                 result.push(member);
               }
@@ -105,7 +105,7 @@ const searchKeywords = (keywords) => {
           case("independent"): 
             data.forEach(member => {
               // if keyword matches
-              if (member.party == "I") {
+              if (member.party === "I") {
                 console.log(member);
                 result.push(member);
               }
