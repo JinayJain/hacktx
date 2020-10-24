@@ -1,10 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { Input } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const Searchbar = () => {
   return (
     <div>
         Search Bar wow
+        <Input size="large" placeholder="SEARCH BY KEYWORDS" suffix={<UserOutlined />} />
+        <br />
     </div>
   )
 }
