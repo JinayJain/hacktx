@@ -13,15 +13,16 @@ function App () {
           <Route path="/test">
             <div>yo yo yo o</div>
           </Route>
+          <Route path="/members">
+            <Result/> 
+          </Route>
           <Route path="/home">
             <Home />
           </Route>
           <Route path="/">
             <Home />
           </Route>
-          <Route path="/members">
-            <Result/>
-          </Route>
+          
         </Switch>
       </div>
     </Router>

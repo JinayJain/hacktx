@@ -12,9 +12,9 @@ function Members() {
     return (
         <div className="member-container">
             {members && members.map((data, key) => {
-                if ((data.party) == "R"){
+                if ((data.party) === "R"){
                     returnParty="Republican";
-                } else if (data.party == "D") {
+                } else if (data.party === "D") {
                     returnParty="Democrat";
                 } else {
                     returnParty="Independent";
@@ -36,20 +36,20 @@ function Members() {
     );
 }
 
-const Member = ({name, image, state, district, hometown, party}) => {
+const Member = ({name, state, district, hometown, party}) => {
     let history = useHistory();
     function toProfile(name) {
-        history.push("/member/"+name);
+        history.push("/member/"+ name);
     }
     return (
         <div className="member-card">
-            <img src={image}></img>
+            {/* <img src={image}></img> */}
             <div className="party">{party}</div>
             <h2><strong>{name}</strong></h2>
             <h4><strong>State: </strong>{state}</h4>
             <h4><strong>District: </strong>{district}</h4>
             <h4><strong>Hometown: </strong>{hometown}</h4>
-            <Button type="primary" shape="round" size='large' onClick={toProfile(name.trim())}>
+            <Button type="primary" shape="round" size='large' onClick={()=>toProfile(name.trim())}>
                 Candidate Profile
             </Button>
         </div>
