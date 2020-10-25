@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../logo.svg';
 import filter from './filter.svg';
+import result from './result.svg';
 import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css';
 import Vote from '../../components/Vote';
@@ -106,7 +107,7 @@ const Home = () => {
           <Maps/>
         </div>
         <div id="result_section" ref={resultRef}>
-          <h1>Search Result</h1>
+          <img src={result}/>
           <Members array={data}/>
         </div>
     </Content>
