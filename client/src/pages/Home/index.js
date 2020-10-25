@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import logo from '../../logo.svg';
 import other_logo from './rightsdemocracy_vermont.png';
-<<<<<<< HEAD
 import './styles.css';
 import Vote from '../../components/Vote';
 import Searchbar from '../../components/Searchbar';
 import MapComponent from '../../components/Map/MapComponent';
 import Members from '../../components/Card/card';
 
-=======
-import './styles.css'
-import Vote from '../../components/Vote'
-import { Searchbar } from '../../components/Searchbar'
-import Members from '../../components/Card/card';
-import MapComponent from '../../components/Map/MapComponent'
->>>>>>> bf74fd70336c30ffb99a3f2fe3dbaac782d70b71
 import { Layout, Row, Col, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -116,7 +108,6 @@ const Home = () => {
           <h1>Search Result</h1>
           <Members array={data}/>
         </div>
-        <Members array={data} />
     </Content>
   )
 }
