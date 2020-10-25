@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../logo.svg';
+import filter from './filter.svg';
 import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css';
 import Vote from '../../components/Vote';
@@ -14,7 +15,7 @@ const Home = () => {
   const resultRef = React.useRef(null)
   const mapRef = React.useRef(null)
 
-  const [data, setData] = useState([{"first":"Lamar","last":"Alexander","party":"R","state":"TN","hometown":"Maryville"}])
+  const [data, setData] = useState([])
 
   const scrollToResult = () => {
     resultRef.current.scrollIntoView({ 
@@ -96,12 +97,12 @@ const Home = () => {
           </div>
           <div className="left">
             <br/><br/>
-            <img src={other_logo} />
+            <img src={other_logo}/>
             <h5>By Rights & Democracy: Vermont</h5>
           </div>
         </div>
         <div id="map_section" ref={mapRef}>
-          <h1>Filter by location </h1>
+          <img src={filter}/>
           <Maps/>
         </div>
         <div id="result_section" ref={resultRef}>

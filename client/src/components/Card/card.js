@@ -8,47 +8,49 @@ import elephant from "./Republican.png";
 
 function Members({array}) {
     console.log(array);
-    const parties = {
-        "D" : donkey,
-        "R" : elephant,
-        "I" : donkey
-    };
-
-    const imagelink = "https://theunitedstates.io/images/congress/450x550/C001088.jpg"
 
     console.log("this ran 2");
     return (
         <div className="member-container">
             {array.map((member, i) => (
                 <Member 
+                id={member.id}
                 name={member.first_name + " " + member.last_name}
                 image={"https://theunitedstates.io/images/congress/450x550/" + member.id + ".jpg"} 
                 state={member.state} 
                 district={member.district} 
-                party={parties[member.party]}
+                party={member.party}
                 />
             ))}
         </div>
     );
 }
 
-const Member = ({name, image, state, district, party}) => {
+const Member = ({id, name, image, state, district, party}) => {
     let history = useHistory();
     let partyimage;
     let partytext; 
     function toProfile(name) {
-        history.push("/member/"+ name);
+        history.push("/members/"+ id);
     }
-    if (party == donkey) {
+    const parties = {
+        "D" : donkey,
+        "R" : elephant,
+        "I" : donkey
+    };
+    
+    if (party == 'D') {
         partytext = "Democrat";
-    } else if (party == elephant) {
+    } else if (party == 'R') {
         partytext = "Republican";
     } else {
         partytext = "Independent";
     }
+
+    
     return (
         <div className="member-card" size="small" style={{ width: 600, paddingTop: '0px', paddingBottom: '0px'}} onClick={()=>toProfile(name.replace(/\s/g, ''))}>
-            <div className={party}><img className="partyicon" src={party}></img><h1 className="text-padding">{name}</h1></div>
+            <div className={partytext}><img className="partyicon" src={parties[party]}></img><h1 className="text-padding">{name}</h1></div>
             <div className="card-body">
                 <img className="headshot" src={image}></img>
                 <div className="info">
