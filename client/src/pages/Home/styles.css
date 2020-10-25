@@ -8,15 +8,53 @@
 
 #info_section {
     width: 100vw;
-    height: 100vh;
     padding: 50px;
     background-color: #002761;
+    overflow:auto; 
 }
+
+#info_section .left {
+    width: 40%;
+    float: left;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#info_section .right {
+    width: 60%;
+    float: right;
+    height: 100%;
+}
+
+#info_section .left h5 {
+    color: white;
+    margin-top: 2vh;
+    text-align: center;
+}
+
+#info_section .left img {
+    display: block;
+    margin: auto;
+    width: 60%;
+}
+
+#info_section .right h1 {
+    color: white;
+    font-size: 50px;
+    font-style: italic;
+}
+
+#info_section .right p {
+    color: white;
+    font-size: 35px;
+    width: 90%;
+}
+
 #map_section {
     width: 100vw;
     height: 100vh;
     padding: 50px;
-    background-color: #A9A9A9;
+    background-color: #FFFFFF;
 }
 #result_section {
     width: 100vw;
@@ -27,6 +65,7 @@
 #logo {
     margin: 200px 0 -50px 0;
 }
+
 .blueButton {
     height: 50px;
     width: 20%;
@@ -34,9 +73,6 @@
     margin-right: 25px;
     background-color: #002761;
 }
-.blueButton:hover { 
-    background-color: #002761;
-} 
 Button:hover {
         -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
@@ -49,6 +85,3 @@ Button:hover {
     margin-right: 25px;
     background-color: #AD0000;
 }
-.redButton:hover { 
-    background-color: #AD0000;
-} 
