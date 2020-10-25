@@ -32,6 +32,9 @@
     margin-right: 25px;
     background-color: #002761;
 }
+.blueButton:hover { 
+    background-color: #002761;
+} 
 Button:hover {
         -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
@@ -44,3 +47,6 @@ Button:hover {
     margin-right: 25px;
     background-color: #AD0000;
 }
+.redButton:hover { 
+    background-color: #AD0000;
+} 
