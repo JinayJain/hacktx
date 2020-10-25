@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react';
 import logo from '../../logo.svg';
 import other_logo from './rightsdemocracy_vermont.png';
-import './styles.css'
-import Vote from '../../components/Vote'
-import Searchbar from '../../components/Searchbar'
-import MapComponent from '../../components/Map/MapComponent'
+import './styles.css';
+import Vote from '../../components/Vote';
+import Searchbar from '../../components/Searchbar';
+import MapComponent from '../../components/Map/MapComponent';
+import Members from '../../components/Card/card';
 
 import { Layout, Row, Col, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
@@ -76,6 +77,7 @@ const Home = () => {
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
         </div>
+        <Members array={data} />
     </Content>
   )
 }
@@ -111,7 +113,7 @@ const Maps = () => {
   };
   return ( <>
       <Row>
-          <Col span={16}>
+      <Col span={16}>
               <MapComponent containerStyle={containerUSConnected} defaultZoom={4} center={ {  lat: 40.78, lng: -101.76 }} borderBounds={US_BOUNDS}/>
           </Col>
           <Col span={8}>

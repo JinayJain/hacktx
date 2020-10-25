@@ -10,12 +10,10 @@ const divStyle = {
 
 const MapComponent = (props) => {
   const [members, setMembers] = useState([]);
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     fetch('/api/members').then(res => res.json()).then(res => {
       setMembers(res);
-      setLoaded(true);
     });
   }, []);
 
@@ -184,7 +182,7 @@ const MapComponent = (props) => {
         return (
           <>
             <Marker onClick={() => {showInfoWindow(index)}} position={curPos} />
-            {showInfoArr[index] && loaded && (<InfoWindow onCloseClick={() => {closeInfoWindow(index)}} position={curPos}>
+            {showInfoArr[index] && (<InfoWindow onCloseClick={() => {closeInfoWindow(index)}} position={curPos}>
               <div style={divStyle}>
                 <h1>{key} Representatives:</h1>
                 {members.filter(val => {
