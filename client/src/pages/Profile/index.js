@@ -260,6 +260,11 @@ function Profile() {
               {ratings*10 + "%"} reliable according to user reviews.
             </h3>
           )}
+          {!ratings && (
+            <h3 style={{ textAlign: "center", marginTop: "15px" }}>
+              This congressperson has no user reviews.
+            </h3>
+          )}
         </div>
       </div>
 
