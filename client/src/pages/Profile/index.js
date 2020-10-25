@@ -8,12 +8,48 @@ import {
   ReadOutlined,
   TwitterSquareFilled,
 } from "@ant-design/icons";
-import React, { useEffect, useState } from "react";
+import { Slider, InputNumber, Row, Col, Button } from 'antd';
+import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapComponent from "../../components/Map/MapComponent";
 import firebase from "firebase";
 import app from "../../base";
 import "./styles.css";
+
+const IntegerStep = (props) => {
+  const submitInput = useCallback(async (val, rating, times, id) => {
+    const db = app.database().ref().child('rating').child(id).set({
+      value : (rating * times + val) / (times + 1),
+      amount : (times + 1)
+    })
+  })
+
+  const [inputValue, setInputValue] = useState(1);
+
+  return (
+    <Row style={{ margin: "auto"}}>
+      <Col offset={5} span={12}>
+        <Slider
+          min={1}
+          max={10}
+          onChange={setInputValue}
+          value={typeof inputValue === 'number' ? inputValue : 0}
+        />
+      </Col>
+      <Col span={4}>
+        <InputNumber
+          min={1}
+          max={10}
+          style={{ margin: '0 16px' }}
+          value={inputValue}
+          onChange={setInputValue}
+          onPressEnter={() => {submitInput(inputValue, props.rating, props.amount, props.id)}}
+        />
+      </Col>
+      <Button type="primary" shape="round" onClick={() => {submitInput(inputValue, props.rating, props.amount, props.id)}}> Submit </Button>
+    </Row>
+  );
+}
 
 let stateCoords = {
   AK: [63.588753, -154.493062],
@@ -111,6 +147,7 @@ function Profile() {
   let { id } = useParams();
   const [member, setMember] = useState({});
   const [ratings, setRatings] = useState(null);
+  const [amount, setAmount] = useState(null);
 
   useEffect(() => {
     fetch(`/api/members/${id}`)
@@ -124,7 +161,8 @@ function Profile() {
       const curRating = snapshot.val()['rating'];
       if (!(id in curRating)) {}
       else {
-         setRatings(curRating[id]); 
+         setRatings(curRating[id].value); 
+         setAmount(curRating[id].amount);
       } 
     })
 
@@ -266,6 +304,11 @@ function Profile() {
             </h3>
           )}
         </div>
+      </div>
+
+      <div>
+        <h3 style={{ textAlign: "center", marginTop: "15px" }}>How Reliable Is This Person?</h3>
+        <IntegerStep id={id} rating={ratings} amount={amount}/>
       </div>
 
       <Divider />
