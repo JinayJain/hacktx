@@ -96,7 +96,6 @@ export const Searchbar = ({ setData, scrollToResult }) => {
   const searchAndSetData = () => {
     let data = searchKeywords(formData.keywords);
     console.log(data);
-    console.log("setData: " + setData());
     setData(data);
     console.log("scrolltoresult: " + scrollToResult);
     scrollToResult();
