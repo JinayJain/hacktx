@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../logo.svg'
 
 import './styles.css'
-import Members from '../../components/Card/card';
+import Members from '../../components/Card/card'
 import Searchbar from '../../components/Searchbar'
 import MapComponent from '../../components/Map/MapComponent'
 
@@ -13,8 +13,10 @@ import { Row, Col } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
-  const resultRef = React.useRef(null);
-  const mapRef = React.useRef(null);
+  const resultRef = React.useRef(null)
+  const mapRef = React.useRef(null)
+
+  const [data, setData] = useState([{"first":"Lamar","last":"Alexander","party":"R","state":"TN","hometown":"Maryville"}])
 
   const scrollToResult = () => {
     resultRef.current.scrollIntoView({ 
@@ -22,7 +24,6 @@ const Home = () => {
       block: "nearest"
     })
   }
-
   const scrollToMaps = () => {
     mapRef.current.scrollIntoView({ 
       behavior: "smooth", 
@@ -35,7 +36,7 @@ const Home = () => {
         <div className="cover_section">
           <img id="logo" src={logo}/>
           <h1>The Politician Index needed to keep representatives accountable.</h1>
-          <Searchbar/>
+          <Searchbar setData={setData}/>
           <br/>
           <Row>
             <Button
@@ -61,7 +62,7 @@ const Home = () => {
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
-          <Members/>
+          <Members array={data}/>
         </div>
     </Content>
   )
@@ -79,8 +80,8 @@ const Maps = () => {
   const ALASKA_BOUNDS = {
       north: 75,
       south: 50,
-      east: -130,
-      west: -210
+      east: -135,
+      west: -175
   };   
   const HAWAII_BOUNDS = {
       north: 25,
