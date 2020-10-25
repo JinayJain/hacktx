@@ -226,7 +226,7 @@ function Profile() {
       <Divider />
 
       <div>
-        <h2 style={{ textAlign: "center" }}>PoliDex Reliability Score</h2>
+        <h2 style={{ textAlign: "center" }}>Polídex Reliability Score</h2>
         <div style={{ marginBottom: "20px" }}>
           <div
             style={{
