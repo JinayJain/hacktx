@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../../logo.svg';
 import filter from './filter.svg';
+import result from './result.svg';
 import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css';
 import Vote from '../../components/Vote';
@@ -8,7 +9,7 @@ import Searchbar from '../../components/Searchbar';
 import MapComponent from '../../components/Map/MapComponent';
 import Members from '../../components/Card/card';
 
-import { Layout, Row, Col, Button } from 'antd';
+import { Layout, Row, Col, Button, Divider } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
@@ -17,49 +18,28 @@ const Home = () => {
 
   const [data, setData] = useState([])
 
+  const searchForAll = () => {
+    fetch('/api/members').then(res => res.json()).then(res => {
+      setData(res);
+      scrollToResult();
+    });
+  };
+
   const scrollToResult = () => {
     resultRef.current.scrollIntoView({ 
       behavior: "smooth", 
       block: "nearest"
     })
   }
+
   const scrollToMaps = () => {
     mapRef.current.scrollIntoView({ 
       behavior: "smooth", 
       block: "nearest"
     })
   }
-
-  const searchForAll = () => {
-    let result = [];
-    let senate = fetch("http://localhost:8080/api/senate/members", {
-                headers:{
-                    "accepts":"application/json"
-                }
-          })
-          .then(res => res.json())
-          .then(data => {
-                data.forEach(member => {
-                  result.push(member);
-                });
-              });
-      let house = fetch("http://localhost:8080/api/house/members", {
-          headers:{
-              "accepts":"application/json"
-          }
-      })
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(member => {
-          result.push(member);
-        });
-      });
-    console.log("result: " + result);
-    setData(result);
-    scrollToResult();
-    return result;
-  }
-
+  
+  
   return (
     <Content>
         <Vote/>
@@ -106,7 +86,9 @@ const Home = () => {
           <Maps/>
         </div>
         <div id="result_section" ref={resultRef}>
-          <h1>Search Result</h1>
+          <img id="result_image" src={result}/>
+          <Divider />
+          <br/>
           <Members array={data}/>
         </div>
     </Content>

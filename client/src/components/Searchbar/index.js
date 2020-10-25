@@ -107,7 +107,7 @@ export const Searchbar = ({ setData, scrollToResult }) => {
         className="keywords"
         id="keywords"
         size="large"
-        placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
+        placeholder="Search by Keywords (e.g. name, location, party, etc)" 
         allowClear 
         style={{ width: '60%' }} 
         onKeyDown={handleKeyDown}
