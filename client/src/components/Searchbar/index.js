@@ -140,6 +140,7 @@ const searchKeywords = (keywords) => {
   console.log(result);
   return result;
 }
+
 const Searchbar = ({ setData, scrollToResult }) => {
   const initialSearchData = Object.freeze({
     keywords: "",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InfoWindow, Marker, GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const divStyle = {
@@ -8,6 +8,13 @@ const divStyle = {
 }
 
 const MapComponent = (props) => {
+  const [senate, setSenate] = useState({});
+  const [house, setHouse] = useState({});
+
+  useEffect(() => {
+    
+  }, []);
+
   const markerPosns = {
     "Alabama" : [32.806671,	-86.791130],
     "Alaska"  : [61.370716,	-152.404419],
