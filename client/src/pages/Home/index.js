@@ -29,9 +29,6 @@ const Home = () => {
       block: "nearest"
     })
   }
-<<<<<<< HEAD
-  console.log(data);
-=======
 
   const searchForAll = () => {
     let result = [];
@@ -63,7 +60,6 @@ const Home = () => {
     return result;
   }
 
->>>>>>> c2c0852945b20ca3588a62a7d94fe742cf0f5330
   return (
     <Content>
         <Vote/>
@@ -111,14 +107,7 @@ const Home = () => {
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
-<<<<<<< HEAD
-          {JSON.stringify(data)}
-          {/* <Members
-            array={data}
-          /> */}
-=======
           <Members array={data}/>
->>>>>>> c2c0852945b20ca3588a62a7d94fe742cf0f5330
         </div>
     </Content>
   )
