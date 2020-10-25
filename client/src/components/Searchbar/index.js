@@ -23,7 +23,7 @@ const searchKeywords = (keywords) => {
                 data.forEach(member => {
                   // if keyword matches
                   if (member.party === "D") {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -32,7 +32,7 @@ const searchKeywords = (keywords) => {
                 data.forEach(member => {
                   // if keyword matches
                   if (member.party === "R") {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -41,7 +41,7 @@ const searchKeywords = (keywords) => {
                 data.forEach(member => {
                   // if keyword matches
                   if (member.party === "I") {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -65,7 +65,7 @@ const searchKeywords = (keywords) => {
                   });
                   
                   if (matches) {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -87,7 +87,7 @@ const searchKeywords = (keywords) => {
             data.forEach(member => {
               // if keyword matches
               if (member.party === "D") {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -96,7 +96,7 @@ const searchKeywords = (keywords) => {
             data.forEach(member => {
               // if keyword matches
               if (member.party === "R") {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -105,7 +105,7 @@ const searchKeywords = (keywords) => {
             data.forEach(member => {
               // if keyword matches
               if (member.party === "I") {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -129,7 +129,7 @@ const searchKeywords = (keywords) => {
               });
               
               if (matches) {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -137,17 +137,14 @@ const searchKeywords = (keywords) => {
         }
       });
     });
-  console.log(keywords);
+  console.log("result: " + result);
+  return result;
 }
-
-const Searchbar = () => {
-
+const Searchbar = ({ setData, scrollToResult }) => {
   const initialSearchData = Object.freeze({
     keywords: "",
   });
-
   const [formData, updateFormData] = React.useState(initialSearchData);
-
   const handleChange = (event) => {
     console.log("EVENT: "+ event);
     updateFormData({
@@ -156,14 +153,20 @@ const Searchbar = () => {
         keywords: document.getElementById("keywords").value.trim()
       });
   }
-
   const handleKeyDown = (event) => {
     console.log(event);
     if (event.key === 'Enter') {
-      searchKeywords(formData.keywords);
+      searchAndSetData();
     }
   }
-
+  const searchAndSetData = () => {
+    let data = searchKeywords(formData.keywords);
+    console.log(data);
+    console.log("setData: " + setData());
+    setData(data);
+    console.log("scrolltoresult: " + scrollToResult);
+    scrollToResult();
+  }
   return (
     <>
     <Row>
@@ -176,10 +179,9 @@ const Searchbar = () => {
         style={{ width: '60%' }} 
         onKeyDown={handleKeyDown}
         onChange={(e) => handleChange(e.target.value)}
-        
       />
       <Button 
-        //on click here
+        onClick={searchAndSetData}
         style={{ height: '75px'}}
       >
         <SearchOutlined style={{ fontSize: '250%', color: '#002761'}}/>
@@ -188,5 +190,4 @@ const Searchbar = () => {
     </>
   )
 }
-
 export default Searchbar
