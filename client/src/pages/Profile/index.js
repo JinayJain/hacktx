@@ -10,11 +10,14 @@ import {
 } from "@ant-design/icons";
 import { Slider, InputNumber, Row, Col, Button } from 'antd';
 import React, { useCallback, useEffect, useState } from "react";
+import { Col } from 'antd';
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapComponent from "../../components/Map/MapComponent";
 import firebase from "firebase";
 import app from "../../base";
 import "./styles.css";
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 const IntegerStep = (props) => {
   const submitInput = useCallback(async (val, rating, times, id) => {
@@ -262,7 +265,6 @@ function Profile() {
           )}
         </div>
       </div>
-
       <div>
         <h2 style={{ textAlign: "center" }}>User Reliability Score</h2>
         <div style={{ marginBottom: "20px" }}>
@@ -319,11 +321,9 @@ function Profile() {
             member.votes.map((b, i) => <BillCard key={i} bill={b} />)}
         </div>
       </div>
-
       <br />
       <Divider />
-
-      <div>
+      <div className="news">
         <h1>
           {member.first_name} {member.last_name} in the News
         </h1>

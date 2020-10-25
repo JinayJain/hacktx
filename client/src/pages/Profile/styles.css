@@ -72,8 +72,6 @@
   align-items: center;
 }
 
-
-
 body::-webkit-scrollbar {
     width: 10px;
 }
