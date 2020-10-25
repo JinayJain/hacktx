@@ -11,6 +11,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapComponent from "../../components/Map/MapComponent";
+import firebase from "firebase";
+import app from "../../base";
 import "./styles.css";
 
 let stateCoords = {
@@ -104,6 +106,7 @@ const ArticleCard = ({ article }) => (
 function Profile() {
   let { id } = useParams();
   const [member, setMember] = useState({});
+  const [ratings, setRatings] = useState(null);
 
   useEffect(() => {
     fetch(`/api/members/${id}`)
@@ -112,7 +115,20 @@ function Profile() {
         console.log(res);
         setMember(res);
       });
+
+    const db = app.database().ref().on('value', (snapshot) => {
+      const curRating = snapshot.val()['rating'];
+      if (!(id in curRating)) {}
+      else {
+         setRatings(curRating[id]); 
+      } 
+    })
+
   }, [id]);
+
+  if (ratings != null) {
+    console.log(ratings);
+  }
 
   const US_BOUNDS = {
     north: 55,
