@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Input } from 'antd';
+import { Row, Input, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 import './styles.css'
@@ -165,17 +165,27 @@ const Searchbar = () => {
   }
 
   return (
-    <Input.Search 
-      className="keywords"
-      id="keywords"
-      size="large"
-      placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
-      allowClear 
-      style={{ width: '60%' }} 
-      onKeyDown={handleKeyDown}
-      onChange={(e) => handleChange(e.target.value)}
-      suffix={<SearchOutlined/>}
-    />
+    <>
+    <Row>
+    <Input 
+        className="keywords"
+        id="keywords"
+        size="large"
+        placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
+        allowClear 
+        style={{ width: '60%' }} 
+        onKeyDown={handleKeyDown}
+        onChange={(e) => handleChange(e.target.value)}
+        
+      />
+      <Button 
+        //on click here
+        style={{ height: '75px'}}
+      >
+        <SearchOutlined style={{ fontSize: '250%', color: '#002761'}}/>
+      </Button>
+    </Row>
+    </>
   )
 }
 
