@@ -3,12 +3,16 @@ import 'antd/dist/antd.css';
 import { Card, Button } from 'antd';
 import './styles.css';
 import { useHistory } from "react-router-dom";
+import donkey from "./Democrat.png";
+import elephant from "./Republican.png";
 
-
-function Members(array) {
-    let [members, setMembers] = useState(array);    
+function Members({array}) {
+    console.log("array e:" + array);
+    let members = array;
+    //let [members, setMembers] = useState(array);
     let imagelink = "https://theunitedstates.io/images/congress/450x550/C001088.jpg"
     let returnParty;
+    let party;
     console.log(members);
     return (
         <div className="member-container">
@@ -16,20 +20,22 @@ function Members(array) {
             {members['array'] && members['array'].map((data, key) => {
                 if ((data.party) === "R"){
                     returnParty="Republican";
+                    party = elephant;
                 } else if (data.party === "D") {
                     returnParty="Democrat";
+                    party = donkey;
                 } else {
                     returnParty="Independent";
                 }
                 return (
                     <>
                         <Member
-                            image={imagelink}
                             name={data.first + " " + data.last}
                             state={data.state}
                             district={data.district}
                             hometown={data.hometown}
                             party= {returnParty}
+                            partyimage={party}
                         />
                     </>
                 )
@@ -39,15 +45,15 @@ function Members(array) {
     );
 }
 
-const Member = ({name, image, state, district, hometown, party}) => {
+const Member = ({name, image, state, district, hometown, party, partyimage}) => {
     let history = useHistory();
     function toProfile(name) {
         history.push("/member/"+ name);
     }
     return (
-        <div className="member-card" size="small" style={{ width: 600, paddingTop: '0px'}} onClick={()=>toProfile(name.replace(/\s/g, ''))}>
+        <div className="member-card" size="small" style={{ width: 600, paddingTop: '0px', paddingBottom: '0px'}} onClick={()=>toProfile(name.replace(/\s/g, ''))}>
             
-            <div className={party}><h1 className="text-padding">{name}</h1></div>
+            <div className={party}><img className="partyicon" src={partyimage}></img><h1 className="text-padding">{name}</h1></div>
             <div className="card-body">
                 <img className="headshot" src={image}></img>
                 <div className="info">
