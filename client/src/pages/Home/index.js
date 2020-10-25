@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../logo.svg'
+import Members from '../../components/Card/card';
 
 import './styles.css'
 import Members from '../../components/Card/card'
