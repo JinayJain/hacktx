@@ -9,7 +9,7 @@ import Searchbar from '../../components/Searchbar';
 import MapComponent from '../../components/Map/MapComponent';
 import Members from '../../components/Card/card';
 
-import { Layout, Row, Col, Button } from 'antd';
+import { Layout, Row, Col, Button, Divider } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
@@ -86,7 +86,9 @@ const Home = () => {
           <Maps/>
         </div>
         <div id="result_section" ref={resultRef}>
-          <img src={result}/>
+          <img id="result_image" src={result}/>
+          <Divider />
+          <br/>
           <Members array={data}/>
         </div>
     </Content>

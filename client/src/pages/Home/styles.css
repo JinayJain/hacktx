@@ -97,3 +97,8 @@ Button:hover {
     margin-right: 25px;
     background-color: #AD0000;
 }
+#result_image {
+    width: auto;
+    margin: 0 auto;
+    display: block;
+}
