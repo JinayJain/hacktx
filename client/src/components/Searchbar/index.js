@@ -160,7 +160,6 @@ const Searchbar = ({ setData, scrollToResult }) => {
   const searchAndSetData = async () => {
     let data = await searchKeywords(formData.keywords);
     console.log(data);
-    console.log("setData: " + setData());
     setData(data);
     console.log("scrolltoresult: " + scrollToResult);
     scrollToResult();
