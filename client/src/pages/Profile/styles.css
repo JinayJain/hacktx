@@ -1,0 +1,73 @@
+.profileContainer {
+  margin: 40px 200px;
+  font-size: 1.2rem;
+}
+
+.memberImage {
+  height: 350px;
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
+}
+
+.memberName {
+  font-size: 4rem;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+
+.memberTagline {
+  font-size: 2.0rem;
+  color: grey;
+  margin-bottom: 0;
+}
+
+.memberLinks {
+  font-size: 2rem;
+}
+
+.memberLinks {
+  font-size: 2rem;
+}
+
+.memberLinks > a {
+  margin-right: 10px;
+}
+
+.memberSectionTitle {
+  font-size: 2.5rem;
+}
+
+.billBox {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.billCard {
+  border: 1px solid #bbb;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  margin-right: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voteIndicator {
+  font-size: 50px;
+}
+
+.newsBox {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.articleCard {
+  border: 1px solid #bbb;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+  margin-right: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
