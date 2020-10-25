@@ -12,7 +12,7 @@ function App () {
     <Router>
       <div>
         <Switch>
-          <Route path="/member">
+          <Route path="/members/:id">
             <Profile />
           </Route>
           <Route path="/members">

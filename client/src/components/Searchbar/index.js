@@ -4,11 +4,7 @@ import { SearchOutlined } from '@ant-design/icons';
 
 import './styles.css'
 
-<<<<<<< HEAD
 const searchKeywords = async (keywords) => {
-=======
-export const searchKeywords = (keywords) => {
->>>>>>> bf74fd70336c30ffb99a3f2fe3dbaac782d70b71
   let result = [];
   let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
   console.log(keywords_array);
@@ -163,7 +159,6 @@ export const Searchbar = ({ setData, scrollToResult }) => {
   const searchAndSetData = async () => {
     let data = await searchKeywords(formData.keywords);
     console.log(data);
-    console.log("setData: " + setData());
     setData(data);
     console.log("scrolltoresult: " + scrollToResult);
     scrollToResult();
