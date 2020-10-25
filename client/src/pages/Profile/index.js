@@ -8,10 +8,12 @@ import {
   ReadOutlined,
   TwitterSquareFilled,
 } from "@ant-design/icons";
+import { Col } from 'antd';
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapComponent from "../../components/Map/MapComponent";
 import "./styles.css";
+import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 let stateCoords = {
   AK: [63.588753, -154.493062],
@@ -212,7 +214,6 @@ function Profile() {
           )}
         </div>
       </div>
-
       <Divider />
       <div>
         <h1>Voting History</h1>
@@ -221,11 +222,9 @@ function Profile() {
             member.votes.map((b, i) => <BillCard key={i} bill={b} />)}
         </div>
       </div>
-
       <br />
       <Divider />
-
-      <div>
+      <div className="news">
         <h1>
           {member.first_name} {member.last_name} in the News
         </h1>
