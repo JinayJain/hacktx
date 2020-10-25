@@ -1,0 +1,12 @@
+#voteButton {
+    background-color: #AD0000;
+    border: none;
+    color: #ffffff;
+    float: right;
+    width: 10vw;
+    height: 7.5vh;
+    font-size: 1.5rem;
+    margin-right: 25px;
+    top: 2em;
+    z-index: 10;
+}

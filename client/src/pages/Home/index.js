@@ -1,12 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react';
 import logo from '../../logo.svg';
+import filter from './filter.svg';
 import other_logo from './rightsdemocracy_vermont.png';
-import './styles.css'
-import Searchbar from '../../components/Searchbar'
-import MapComponent from '../../components/Map/MapComponent'
+import './styles.css';
+import Vote from '../../components/Vote';
+import Searchbar from '../../components/Searchbar';
+import MapComponent from '../../components/Map/MapComponent';
 import Members from '../../components/Card/card';
-import SimpleBar from 'simplebar-react';
-import 'simplebar/dist/simplebar.min.css';
+
 import { Layout, Row, Col, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -28,10 +29,45 @@ const Home = () => {
       block: "nearest"
     })
   }
+<<<<<<< HEAD
   console.log(data);
+=======
+
+  const searchForAll = () => {
+    let result = [];
+    let senate = fetch("http://localhost:8080/api/senate/members", {
+                headers:{
+                    "accepts":"application/json"
+                }
+          })
+          .then(res => res.json())
+          .then(data => {
+                data.forEach(member => {
+                  result.push(member);
+                });
+              });
+      let house = fetch("http://localhost:8080/api/house/members", {
+          headers:{
+              "accepts":"application/json"
+          }
+      })
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(member => {
+          result.push(member);
+        });
+      });
+    console.log("result: " + result);
+    setData(result);
+    scrollToResult();
+    return result;
+  }
+
+>>>>>>> c2c0852945b20ca3588a62a7d94fe742cf0f5330
   return (
     <Content>
-        <div className="cover_section">
+        <Vote/>
+        <div id="cover_section">
           <img id="logo" src={logo}/>
           <h1>The Politician Index needed to keep representatives accountable.</h1>
           <Searchbar setData={setData} scrollToResult={scrollToResult}/>
@@ -47,35 +83,42 @@ const Home = () => {
               className="redButton" 
               size="large" 
               type="primary"
-              onClick={scrollToResult}
+              onClick={searchForAll}
             >BROWSE ALL DATA</Button>
           </Row>
         </div>
         <div id="info_section">
         <div className="right">
             <h1>Politicians! Gotta Catch Their Crimes!</h1>
-            <p>With the current divided government we have come to known today, social policies and reform have never been more important.
-              The fact that many of our politicians that we choose lie to the general public about their actions makes the situation even worse. 
-              As it currently stands, there is no easy way to keep track of what politicians are doing in the House and the Senate. Until now!
-              We present to you Polídex! Drawing inspiration from the Pokédex, Polídex aims to track all the actions of politicians in office
-              so you can stay informed!
+            <p>With the divided government we have come to known today, social policies and reform have never been more important.
+              The fact that many of our politicians that we choose to lie to the general public about their actions makes the situation even worse. 
+              <b> As it currently stands, there is no easy way to keep track of what politicians are doing in the House and the Senate. . . until now.</b>
+            </p>
+            <p>
+              Introducing Polídex! Drawing inspiration from the Pokédex, Polídex aims to track all the actions of politicians in office
+              so you can stay informed, combatting <b>corruption</b> and <b>misinformation</b>.
             </p>
           </div>
           <div className="left">
-            <img src={other_logo} />
+            <br/><br/>
+            <img src={other_logo}/>
             <h5>By Rights & Democracy: Vermont</h5>
           </div>
         </div>
         <div id="map_section" ref={mapRef}>
-          <h1>Filter by location </h1>
+          <img src={filter}/>
           <Maps/>
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
+<<<<<<< HEAD
           {JSON.stringify(data)}
           {/* <Members
             array={data}
           /> */}
+=======
+          <Members array={data}/>
+>>>>>>> c2c0852945b20ca3588a62a7d94fe742cf0f5330
         </div>
     </Content>
   )
@@ -112,7 +155,7 @@ const Maps = () => {
   };
   return ( <>
       <Row>
-          <Col span={16}>
+      <Col span={16}>
               <MapComponent containerStyle={containerUSConnected} defaultZoom={4} center={ {  lat: 40.78, lng: -101.76 }} borderBounds={US_BOUNDS}/>
           </Col>
           <Col span={8}>

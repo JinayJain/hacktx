@@ -1,4 +1,4 @@
-.cover_section {
+#cover_section {
     width: 100vw;
     height: 100vh;
     padding: 50px;
@@ -13,6 +13,9 @@ body{
     padding: 50px;
     background-color: #002761;
     overflow:auto; 
+    box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    z-index: 9;
 }
 
 #info_section .left {
@@ -40,6 +43,11 @@ body{
     width: 60%;
 }
 
+#info_section .left:hover img {
+    transition: 0.9s;
+    transform: rotateY(180deg);
+}
+
 #info_section .right h1 {
     color: white;
     font-size: 50px;
@@ -48,7 +56,7 @@ body{
 
 #info_section .right p {
     color: white;
-    font-size: 35px;
+    font-size: 25px;
     width: 90%;
 }
 
@@ -72,7 +80,7 @@ body{
     border: none;
     height: 50px;
     width: 20%;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-right: 25px;
     background-color: #002761;
 }
@@ -85,7 +93,7 @@ Button:hover {
     border: none;
     height: 50px;
     width: 20%;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-right: 25px;
     background-color: #AD0000;
 }

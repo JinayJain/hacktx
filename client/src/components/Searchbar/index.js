@@ -4,146 +4,80 @@ import { SearchOutlined } from '@ant-design/icons';
 
 import './styles.css'
 
-const searchKeywords = (keywords) => {
-  let result = [];
-  let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
-  console.log(keywords_array);
+export const Searchbar = ({ setData, scrollToResult }) => {
+  const [members, setMembers] = useState([]);
+  useEffect(() => {
+    fetch('/api/members').then(res => res.json()).then(res => {
+      setMembers(res);
+    });
+  }, []);
 
-  // find all matching in senate
-  let senate = fetch("http://localhost:8080/api/senate/members", {
-              headers:{
-                  "accepts":"application/json"
-              }
-        })
-        .then(res => res.json())
-        .then(data => {
-          keywords_array.forEach(keyword => {
-            switch(keyword) {
-              case("democrat"): 
-                data.forEach(member => {
-                  // if keyword matches
-                  if (member.party === "D") {
-                    //console.log(member);
-                    result.push(member);
-                  }
-                });
-                break;
-              case("republican"): 
-                data.forEach(member => {
-                  // if keyword matches
-                  if (member.party === "R") {
-                    //console.log(member);
-                    result.push(member);
-                  }
-                });
-                break;
-              case("independent"): 
-                data.forEach(member => {
-                  // if keyword matches
-                  if (member.party === "I") {
-                    //console.log(member);
-                    result.push(member);
-                  }
-                });
-                break;
-              default:
-                data.forEach(member => {
-                  // if keyword matches
-                  let member_string = JSON.stringify(member).toLowerCase();
-
-                  // if they included a space (e.g. John Smith), make sure to split and both exist
-                  let segments = keyword.split(" ");
-                  let matches = false;
-
-                  segments.forEach(seg => {
-                    if (member_string.includes(seg)) {
-                      matches = true;
-                    }
-                    else {
-                      matches = false;
-                    }
-                  });
-                  
-                  if (matches) {
-                    //console.log(member);
-                    result.push(member);
-                  }
-                });
-                break;
+  const searchKeywords = (keywords) => {
+    let result = [];
+    let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
+    console.log(keywords_array);
+      keywords_array.forEach(keyword => {
+      switch(keyword) {
+        case("democrat"): 
+          members.forEach(member => {
+            // if keyword matches
+            if (member.party === "D") {
+              //console.log(member);
+              result.push(member);
             }
           });
-        });
-    // find all matching in house
-    let house = fetch("http://localhost:8080/api/house/members", {
-        headers:{
-            "accepts":"application/json"
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-      keywords_array.forEach(keyword => {
-        switch(keyword) {
-          case("democrat"): 
-            data.forEach(member => {
-              // if keyword matches
-              if (member.party === "D") {
-                //console.log(member);
-                result.push(member);
+          break;
+        case("republican"): 
+          members.forEach(member => {
+            // if keyword matches
+            if (member.party === "R") {
+              //console.log(member);
+              result.push(member);
+            }
+          });
+          break;
+        case("independent"): 
+          members.forEach(member => {
+            // if keyword matches
+            if (member.party === "I") {
+              //console.log(member);
+              result.push(member);
+            }
+          });
+          break;
+        default:
+          members.forEach(member => {
+            // if keyword matches
+            //let member_string = JSON.stringify(member).toLowerCase();
+            let member_string = member.title + member.state + member.first_name + member.last_name;
+            member_string = member_string.toLowerCase();
+            console.log(typeof member_string);
+            // if they included a space (e.g. John Smith), make sure to split and both exist
+            let segments = keyword.split(" ");
+            let matches = false;
+            segments.forEach(seg => {
+              if (member_string.includes(seg)) {
+                matches = true;
+              }
+              else {
+                matches = false;
               }
             });
-            break;
-          case("republican"): 
-            data.forEach(member => {
-              // if keyword matches
-              if (member.party === "R") {
-                //console.log(member);
-                result.push(member);
-              }
-            });
-            break;
-          case("independent"): 
-            data.forEach(member => {
-              // if keyword matches
-              if (member.party === "I") {
-                //console.log(member);
-                result.push(member);
-              }
-            });
-            break;
-          default:
-            data.forEach(member => {
-              // if keyword matches
-              let member_string = JSON.stringify(member).toLowerCase();
+            if (matches) {
+              //console.log(member);
+              result.push(member);
+            }
+          });
+          break;
+      }});
+    console.log("result: " + result);
+    return result;
+  }
 
-              // if they included a space (e.g. John Smith), make sure to split and both exist
-              let segments = keyword.split(" ");
-              let matches = false;
-
-              segments.forEach(seg => {
-                if (member_string.includes(seg)) {
-                  matches = true;
-                }
-                else {
-                  matches = false;
-                }
-              });
-              
-              if (matches) {
-                //console.log(member);
-                result.push(member);
-              }
-            });
-            break;
-        }
-      });
-    });
-  console.log("result: " + result);
-  return result;
-}
-const Searchbar = ({ setData, scrollToResult }) => {
   const initialSearchData = Object.freeze({
     keywords: "",
   });
+
   const [formData, updateFormData] = React.useState(initialSearchData);
   const handleChange = (event) => {
     console.log("EVENT: "+ event);
@@ -162,7 +96,6 @@ const Searchbar = ({ setData, scrollToResult }) => {
   const searchAndSetData = () => {
     let data = searchKeywords(formData.keywords);
     console.log(data);
-    console.log("setData: " + setData());
     setData(data);
     console.log("scrolltoresult: " + scrollToResult);
     scrollToResult();

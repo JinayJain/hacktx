@@ -1,13 +1,84 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InfoWindow, Marker, GoogleMap, LoadScript } from '@react-google-maps/api';
+import { Link } from "react-router-dom";
 
 const divStyle = {
   background: `white`,
-  border: `1px solid #ccc`,
-  padding: 15
+  padding: 15,
+  maxHeight: 200
 }
 
 const MapComponent = (props) => {
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/members').then(res => res.json()).then(res => {
+      setMembers(res);
+    });
+  }, []);
+
+  const states_abbrev =
+  {
+    'Alabama': 'AL',
+    'Alaska': 'AK',
+    'American Samoa': 'AS',
+    'Arizona': 'AZ',
+    'Arkansas': 'AR',
+    'California': 'CA',
+    'Colorado': 'CO',
+    'Connecticut': 'CT',
+    'Delaware': 'DE',
+    'District Of Columbia': 'DC',
+    'Federated States Of Micronesia': 'FM',
+    'Florida': 'FL',
+    'Georgia': 'GA',
+    'Guam': 'GU',
+    'Hawaii': 'HI',
+    'Idaho': 'ID',
+    'Illinois': 'IL',
+    'Indiana': 'IN',
+    'Iowa': 'IA',
+    'Kansas': 'KS',
+    'Kentucky': 'KY',
+    'Louisiana': 'LA',
+    'Maine': 'ME',
+    'Marshall Islands': 'MH',
+    'Maryland': 'MD',
+    'Massachusetts': 'MA',
+    'Michigan': 'MI',
+    'Minnesota': 'MN',
+    'Mississippi': 'MS',
+    'Missouri': 'MO',
+    'Montana': 'MT',
+    'Nebraska': 'NE',
+    'Nevada': 'NV',
+    'New Hampshire': 'NH',
+    'New Jersey': 'NJ',
+    'New Mexico': 'NM',
+    'New York': 'NY',
+    'North Carolina': 'NC',
+    'North Dakota': 'ND',
+    'Northern Mariana Islands': 'MP',
+    'Ohio': 'OH',
+    'Oklahoma': 'OK',
+    'Oregon': 'OR',
+    'Palau': 'PW',
+    'Pennsylvania': 'PA',
+    'Puerto Rico': 'PR',
+    'Rhode Island': 'RI',
+    'South Carolina': 'SC',
+    'South Dakota': 'SD',
+    'Tennessee': 'TN',
+    'Texas': 'TX',
+    'Utah': 'UT',
+    'Vermont': 'VT',
+    'Virginia': 'VA',
+    'Washington': 'WA',
+    'West Virginia': 'WV',
+    'Wisconsin': 'WI',
+    'Wyoming': 'WY'
+  }
+
   const markerPosns = {
     "Alabama" : [32.806671,	-86.791130],
     "Alaska"  : [61.370716,	-152.404419],
@@ -21,11 +92,11 @@ const MapComponent = (props) => {
     "Florida" : [27.766279,	-81.686783],
     "Georgia" :	[33.040619,	-83.643074],
     "Hawaii"  : [21.094318,	-157.498337],
-    "Idaho"   : [44.240459,	-114.478828],
+    "Idaho"    : [44.240459,	-114.478828],
     "Illinois" : [40.349457,	-88.986137],
-    "Indiana" : [39.849426,	-86.258278],
-    "Iowa" : [42.011539,	-93.210526],
-    "Kansas" : [38.526600,	-96.726486],
+    "Indiana"  : [39.849426,	-86.258278],
+    "Iowa"     : [42.011539,	-93.210526],
+    "Kansas"   : [38.526600,	-96.726486],
     "Kentucky" : [37.668140,	-84.670067],
     "Louisiana" : [31.169546,	-91.867805],
     "Maine" : [44.693947,	-69.381927],
@@ -60,10 +131,10 @@ const MapComponent = (props) => {
     "West Virginia" : [38.491226,	-80.954453],
     "Wisconsin" : [44.268543,	-89.616508],
     "Wyoming" : [42.755966,	-107.302490]
-}
+  }
 
   const {center, defaultZoom, borderBounds, containerStyle} = props;
-  
+
   const init = new Array(Object.keys(markerPosns).length);
   for (let i = 0; i < init.length; ++i) { init[i] = false; }
   const [showInfoArr, setShowInfoArr] = useState(init);
@@ -113,7 +184,13 @@ const MapComponent = (props) => {
             <Marker onClick={() => {showInfoWindow(index)}} position={curPos} />
             {showInfoArr[index] && (<InfoWindow onCloseClick={() => {closeInfoWindow(index)}} position={curPos}>
               <div style={divStyle}>
-                <h1>InfoWindow</h1>
+                <h1>{key} Representatives:</h1>
+                {members.filter(val => {
+                  return val.state === states_abbrev[key]}).map(val => {
+                    return <>
+                    <Link to={`/members/${val.id}`}><h2>{val.last_name + ", " + val.first_name}: {val.short_title}</h2></Link>
+                    </>;
+                  })}
               </div>
             </InfoWindow>)}
           </>
