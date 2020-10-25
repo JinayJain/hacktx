@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import logo from '../../logo.svg'
-import Members from '../../components/Card/card';
-
+import logo from '../../logo.svg';
+import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css'
 import Searchbar from '../../components/Searchbar'
 import MapComponent from '../../components/Map/MapComponent'
@@ -51,7 +50,19 @@ const Home = () => {
           </Row>
         </div>
         <div id="info_section">
-          <h1>WOW! INfoRmaTiON!</h1>
+        <div className="right">
+            <h1>Politicians! Gotta Catch Their Crimes!</h1>
+            <p>With the current divided government we have come to known today, social policies and reform have never been more important.
+              The fact that many of our politicians that we choose lie to the general public about their actions makes the situation even worse. 
+              As it currently stands, there is no easy way to keep track of what politicians are doing in the House and the Senate. Until now!
+              We present to you Polídex! Drawing inspiration from the Pokédex, Polídex aims to track all the actions of politicians in office
+              so you can stay informed!
+            </p>
+          </div>
+          <div className="left">
+            <img src={other_logo} />
+            <h5>By Rights & Democracy: Vermont</h5>
+          </div>
         </div>
         <div id="map_section" ref={mapRef}>
           <h1>Filter by location </h1>
@@ -59,7 +70,6 @@ const Home = () => {
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
-          <Members array={data}/>
         </div>
     </Content>
   )
@@ -101,9 +111,9 @@ const Maps = () => {
           </Col>
           <Col span={8}>
               <br/><br/><br/>
-              <MapComponent containerStyle={containerAlaskaHawaii} defaultZoom={5} center={ {  lat: 61.370716, lng: -152.404419 }} borders={ALASKA_BOUNDS}/>
+              <MapComponent containerStyle={containerAlaskaHawaii} defaultZoom={4} center={ {  lat: 61.37, lng: -152.40 }} borders={ALASKA_BOUNDS}/>
               <br/>
-              <MapComponent containerStyle={containerAlaskaHawaii} defaultZoom={6} center={ {  lat: 21.094318, lng: -157.498337 }} borders={HAWAII_BOUNDS}/>
+              <MapComponent containerStyle={containerAlaskaHawaii} defaultZoom={6} center={ {  lat: 21.09, lng: -157.49 }} borders={HAWAII_BOUNDS}/>
           </Col>
       </Row>
       </>
