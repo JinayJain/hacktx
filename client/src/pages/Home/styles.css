@@ -5,7 +5,9 @@
     background-size: 100vw auto;
     background-image: url('cover.jpg');
 }
-
+body{
+    overflow-x: hidden;
+}
 #info_section {
     width: 100vw;
     padding: 50px;

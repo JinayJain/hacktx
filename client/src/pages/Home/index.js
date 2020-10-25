@@ -4,7 +4,9 @@ import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css'
 import Searchbar from '../../components/Searchbar'
 import MapComponent from '../../components/Map/MapComponent'
-
+import Members from '../../components/Card/card';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 import { Layout, Row, Col, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -12,7 +14,7 @@ const Home = () => {
   const resultRef = React.useRef(null)
   const mapRef = React.useRef(null)
 
-  const [data, setData] = useState([{"first":"Lamar","last":"Alexander","party":"R","state":"TN","hometown":"Maryville"}])
+  const [data, setData] = useState([])
 
   const scrollToResult = () => {
     resultRef.current.scrollIntoView({ 
@@ -26,7 +28,7 @@ const Home = () => {
       block: "nearest"
     })
   }
-
+  console.log(data);
   return (
     <Content>
         <div className="cover_section">
@@ -70,6 +72,10 @@ const Home = () => {
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
+          {JSON.stringify(data)}
+          {/* <Members
+            array={data}
+          /> */}
         </div>
     </Content>
   )
