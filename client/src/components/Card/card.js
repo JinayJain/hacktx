@@ -8,16 +8,25 @@ import elephant from "./Republican.png";
 
 function Members({array}) {
     console.log("array e:" + array);
-    let members = array;
-    //let [members, setMembers] = useState(array);
+    let [members, setMembers] = useState([]);
+    useEffect(() => {
+        if(members.length == 0) {
+            setMembers(array);
+        } else if (members.length != 0) {
+            setMembers(array);
+        }
+    }) 
+    
     let imagelink = "https://theunitedstates.io/images/congress/450x550/C001088.jpg"
     let returnParty;
     let party;
     console.log(members);
+
+
     return (
         <div className="member-container">
 
-            {members['array'] && members['array'].map((data, key) => {
+            {members && members.map((data, key) => {
                 if ((data.party) === "R"){
                     returnParty="Republican";
                     party = elephant;
