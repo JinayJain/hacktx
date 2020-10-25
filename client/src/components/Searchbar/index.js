@@ -4,11 +4,10 @@ import { SearchOutlined } from '@ant-design/icons';
 
 import './styles.css'
 
-const searchKeywords = (keywords) => {
+export const searchKeywords = (keywords) => {
   let result = [];
   let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
   console.log(keywords_array);
-
   // find all matching in senate
   let senate = fetch("http://localhost:8080/api/senate/members", {
               headers:{
@@ -140,7 +139,7 @@ const searchKeywords = (keywords) => {
   console.log("result: " + result);
   return result;
 }
-const Searchbar = ({ setData, scrollToResult }) => {
+export const Searchbar = ({ setData, scrollToResult }) => {
   const initialSearchData = Object.freeze({
     keywords: "",
   });

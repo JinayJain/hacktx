@@ -3,9 +3,9 @@ import logo from '../../logo.svg';
 import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css'
 import Vote from '../../components/Vote'
-import Searchbar from '../../components/Searchbar'
+import { Searchbar } from '../../components/Searchbar'
+import Members from '../../components/Card/card';
 import MapComponent from '../../components/Map/MapComponent'
-
 import { Layout, Row, Col, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -28,6 +28,36 @@ const Home = () => {
     })
   }
 
+  const searchForAll = () => {
+    let result = [];
+    let senate = fetch("http://localhost:8080/api/senate/members", {
+                headers:{
+                    "accepts":"application/json"
+                }
+          })
+          .then(res => res.json())
+          .then(data => {
+                data.forEach(member => {
+                  result.push(member);
+                });
+              });
+      let house = fetch("http://localhost:8080/api/house/members", {
+          headers:{
+              "accepts":"application/json"
+          }
+      })
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(member => {
+          result.push(member);
+        });
+      });
+    console.log("result: " + result);
+    setData(result);
+    scrollToResult();
+    return result;
+  }
+
   return (
     <Content>
         <Vote/>
@@ -47,7 +77,7 @@ const Home = () => {
               className="redButton" 
               size="large" 
               type="primary"
-              onClick={scrollToResult}
+              onClick={searchForAll}
             >BROWSE ALL DATA</Button>
           </Row>
         </div>
@@ -75,6 +105,7 @@ const Home = () => {
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
+          <Members array={data}/>
         </div>
     </Content>
   )
