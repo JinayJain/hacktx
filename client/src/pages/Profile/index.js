@@ -127,7 +127,7 @@ function Profile() {
 
   return (
     <div className="profileContainer">
-      <div style={{display:"flex"}}>
+      <div style={{ display: "flex" }}>
         <img
           src={`https://theunitedstates.io/images/congress/450x550/${id}.jpg`}
           alt=""
@@ -135,30 +135,82 @@ function Profile() {
         />
         {member.state && (
           <MapComponent
-            containerStyle={{height: "auto", flex: 1, marginLeft: "40px"}}
+            containerStyle={{ height: "auto", flex: 1, marginLeft: "40px" }}
             center={{
               lat: stateCoords[member.state][0],
               lng: stateCoords[member.state][1],
             }}
             bounds={US_BOUNDS}
-            defaultZoom={6}
+            defaultZoom={7}
           />
         )}
       </div>
       <h1 className="memberName">
-        {member.short_title} {member.first_name} {member.last_name}
+        {member.short_title} {member.first_name} {member.last_name} (
+        {member.party})
       </h1>
       <h3 className="memberTagline">{member.state}</h3>
+
       <div className="memberLinks">
-        {member.twitter_account && <a href={`https://twitter.com/${member.twitter_account}`} target="__blank">
-          <TwitterSquareFilled />
-        </a>}
-        {member.facebook_account && <a href={`https://facebook.com/${member.facebook_account}`} target="__blank">
-          <FacebookFilled />
-        </a>}
+        {member.twitter_account && (
+          <a
+            href={`https://twitter.com/${member.twitter_account}`}
+            target="__blank"
+          >
+            <TwitterSquareFilled />
+          </a>
+        )}
+        {member.facebook_account && (
+          <a
+            href={`https://facebook.com/${member.facebook_account}`}
+            target="__blank"
+          >
+            <FacebookFilled />
+          </a>
+        )}
         <a href={member.url} target="__blank">
           <LinkOutlined />
         </a>
+      </div>
+
+      <Divider />
+
+      <div>
+        <h2 style={{ textAlign: "center" }}>PoliDex Reliability Score</h2>
+        <div style={{ marginBottom: "20px" }}>
+          <div
+            style={{
+              width: "80%",
+              height: "10px",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              margin: "auto",
+              borderRadius: "3px",
+              position: "relative",
+            }}
+          >
+            {member.votes_with_party_pct && (
+              <div
+                style={{
+                  height: "30px",
+                  width: "30px",
+                  position: "absolute",
+                  backgroundColor: "#88cc54",
+                  borderRadius: "50%",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  left: member.votes_with_party_pct.toString() + "%",
+                }}
+              ></div>
+            )}
+          </div>
+
+          {member.votes_with_party_pct && (
+            <h3 style={{ textAlign: "center", marginTop: "15px" }}>
+              This congressperson votes with their party{" "}
+              {member.votes_with_party_pct.toString() + "%"} of the time.
+            </h3>
+          )}
+        </div>
       </div>
 
       <Divider />
