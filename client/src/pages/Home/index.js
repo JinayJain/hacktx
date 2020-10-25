@@ -77,8 +77,8 @@ const Maps = () => {
   const ALASKA_BOUNDS = {
       north: 75,
       south: 50,
-      east: -135,
-      west: -175
+      east: -130,
+      west: -210
   };   
   const HAWAII_BOUNDS = {
       north: 25,

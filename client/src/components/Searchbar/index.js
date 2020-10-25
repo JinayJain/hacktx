@@ -171,7 +171,7 @@ const Searchbar = () => {
       size="large"
       placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
       allowClear 
-      style={{ width: '70%' }} 
+      style={{ width: '60%' }} 
       onKeyDown={handleKeyDown}
       onChange={(e) => handleChange(e.target.value)}
       suffix={<SearchOutlined/>}

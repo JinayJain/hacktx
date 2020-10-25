@@ -1,9 +1,11 @@
 .cover_section {
     width: 100vw;
-    height: 900px;
+    height: 100vh;
     padding: 50px;
-    background-image: url('./cover.png');
+    background-size: 100vw auto;
+    background-image: url('cover.jpg');
 }
+
 #info_section {
     width: 100vw;
     height: 100vh;
@@ -27,7 +29,7 @@
 }
 .blueButton {
     height: 50px;
-    width: 30%;
+    width: 20%;
     margin-top: 25px;
     margin-right: 25px;
     background-color: #002761;
@@ -39,7 +41,7 @@ Button:hover {
 }
 .redButton {
     height: 50px;
-    width: 30%;
+    width: 20%;
     margin-top: 25px;
     margin-right: 25px;
     background-color: #AD0000;
