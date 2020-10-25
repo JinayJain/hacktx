@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Input } from 'antd';
+import { Row, Input, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+
 import './styles.css'
 
 const searchKeywords = (keywords) => {
   let result = [];
   let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
-
   console.log(keywords_array);
 
   // find all matching in senate
@@ -22,7 +22,7 @@ const searchKeywords = (keywords) => {
               case("democrat"): 
                 data.forEach(member => {
                   // if keyword matches
-                  if (member.party == "D") {
+                  if (member.party === "D") {
                     console.log(member);
                     result.push(member);
                   }
@@ -31,7 +31,7 @@ const searchKeywords = (keywords) => {
               case("republican"): 
                 data.forEach(member => {
                   // if keyword matches
-                  if (member.party == "R") {
+                  if (member.party === "R") {
                     console.log(member);
                     result.push(member);
                   }
@@ -40,7 +40,7 @@ const searchKeywords = (keywords) => {
               case("independent"): 
                 data.forEach(member => {
                   // if keyword matches
-                  if (member.party == "I") {
+                  if (member.party === "I") {
                     console.log(member);
                     result.push(member);
                   }
@@ -73,7 +73,6 @@ const searchKeywords = (keywords) => {
             }
           });
         });
-    
     // find all matching in house
     let house = fetch("http://localhost:8080/api/house/members", {
         headers:{
@@ -87,7 +86,7 @@ const searchKeywords = (keywords) => {
           case("democrat"): 
             data.forEach(member => {
               // if keyword matches
-              if (member.party == "D") {
+              if (member.party === "D") {
                 console.log(member);
                 result.push(member);
               }
@@ -96,7 +95,7 @@ const searchKeywords = (keywords) => {
           case("republican"): 
             data.forEach(member => {
               // if keyword matches
-              if (member.party == "R") {
+              if (member.party === "R") {
                 console.log(member);
                 result.push(member);
               }
@@ -105,7 +104,7 @@ const searchKeywords = (keywords) => {
           case("independent"): 
             data.forEach(member => {
               // if keyword matches
-              if (member.party == "I") {
+              if (member.party === "I") {
                 console.log(member);
                 result.push(member);
               }
@@ -166,17 +165,27 @@ const Searchbar = () => {
   }
 
   return (
-    <Input.Search 
-      className="keywords"
-      id="keywords"
-      size="large"
-      placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
-      allowClear 
-      style={{ width: '70%' }} 
-      onKeyDown={handleKeyDown}
-      onChange={(e) => handleChange(e.target.value)}
-      suffix={<SearchOutlined/>}
-    />
+    <>
+    <Row>
+    <Input 
+        className="keywords"
+        id="keywords"
+        size="large"
+        placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
+        allowClear 
+        style={{ width: '60%' }} 
+        onKeyDown={handleKeyDown}
+        onChange={(e) => handleChange(e.target.value)}
+        
+      />
+      <Button 
+        //on click here
+        style={{ height: '75px'}}
+      >
+        <SearchOutlined style={{ fontSize: '250%', color: '#002761'}}/>
+      </Button>
+    </Row>
+    </>
   )
 }
 
