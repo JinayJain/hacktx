@@ -7,7 +7,7 @@ import {
   ReadOutlined,
   TwitterSquareFilled,
 } from "@ant-design/icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 
 const Divider = () => <hr style={{ border: "1px solid #ccc" }} />;
@@ -103,6 +103,13 @@ const articles = [
 ];
 
 function Profile() {
+
+  const [member, setMember] = useState({});
+
+  useEffect(() => {
+    fetch('/api/members/A000360').then(res => res.json()).then(res => setMember(res))
+  }, [])
+
   return (
     <div className="profileContainer">
       <img
