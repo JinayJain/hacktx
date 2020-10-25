@@ -130,10 +130,6 @@ function Profile() {
 
   }, [id]);
 
-  if (ratings != null) {
-    console.log(ratings);
-  }
-
   const US_BOUNDS = {
     north: 55,
     south: 25,
@@ -224,6 +220,44 @@ function Profile() {
             <h3 style={{ textAlign: "center", marginTop: "15px" }}>
               This congressperson votes with their party{" "}
               {member.votes_with_party_pct.toString() + "%"} of the time.
+            </h3>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <h2 style={{ textAlign: "center" }}>User Reliability Score</h2>
+        <div style={{ marginBottom: "20px" }}>
+          <div
+            style={{
+              width: "80%",
+              height: "10px",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              margin: "auto",
+              borderRadius: "3px",
+              position: "relative",
+            }}
+          >
+            {ratings && (
+              <div
+                style={{
+                  height: "30px",
+                  width: "30px",
+                  position: "absolute",
+                  backgroundColor: "#88cc54",
+                  borderRadius: "50%",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  left: ratings*10 + "%",
+                }}
+              ></div>
+            )}
+          </div>
+
+          {ratings && (
+            <h3 style={{ textAlign: "center", marginTop: "15px" }}>
+              This congressperson is considered {" "}
+              {ratings*10 + "%"} reliable according to user reviews.
             </h3>
           )}
         </div>
