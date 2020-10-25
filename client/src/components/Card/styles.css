@@ -34,15 +34,11 @@
     grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
     grid-gap: 1rem;
 }
-.Republican *{
-    border-radius: 10px 10px 0px 0px;
-    background-color: #AD0000;
-    color: ghostwhite;
-}
 .headshot{
     margin: 10px;
     height: 30%;
     width: 30%;
+    border-radius: 10px;
 
 }
 .Democrat *{
@@ -50,7 +46,11 @@
     background-color: #002761;
     color: white;;
 }
-
+.Republican *{
+    border-radius: 10px 10px 0px 0px;
+    background-color: #AD0000;
+    color: ghostwhite;
+}
 .Independent *{
     border-radius: 10px 10px 0px 0px;
     background-color:#4D0149;
