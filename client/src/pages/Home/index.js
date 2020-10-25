@@ -108,7 +108,6 @@ const Home = () => {
           <h1>Search Result</h1>
           <Members array={data}/>
         </div>
-        <Members array={data} />
     </Content>
   )
 }
