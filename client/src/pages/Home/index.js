@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../../logo.svg';
 import filter from './filter.svg';
 import result from './result.svg';
@@ -18,49 +18,28 @@ const Home = () => {
 
   const [data, setData] = useState([])
 
+  const searchForAll = () => {
+    fetch('/api/members').then(res => res.json()).then(res => {
+      setData(res);
+      scrollToResult();
+    });
+  };
+
   const scrollToResult = () => {
     resultRef.current.scrollIntoView({ 
       behavior: "smooth", 
       block: "nearest"
     })
   }
+
   const scrollToMaps = () => {
     mapRef.current.scrollIntoView({ 
       behavior: "smooth", 
       block: "nearest"
     })
   }
-
-  const searchForAll = () => {
-    let result = [];
-    let senate = fetch("http://localhost:8080/api/senate/members", {
-                headers:{
-                    "accepts":"application/json"
-                }
-          })
-          .then(res => res.json())
-          .then(data => {
-                data.forEach(member => {
-                  result.push(member);
-                });
-              });
-      let house = fetch("http://localhost:8080/api/house/members", {
-          headers:{
-              "accepts":"application/json"
-          }
-      })
-      .then(res => res.json())
-      .then(data => {
-        data.forEach(member => {
-          result.push(member);
-        });
-      });
-    console.log("result: " + result);
-    setData(result);
-    scrollToResult();
-    return result;
-  }
-
+  
+  
   return (
     <Content>
         <Vote/>
