@@ -4,11 +4,14 @@ import { SearchOutlined } from '@ant-design/icons';
 
 import './styles.css'
 
+<<<<<<< HEAD
 const searchKeywords = async (keywords) => {
+=======
+export const searchKeywords = (keywords) => {
+>>>>>>> bf74fd70336c30ffb99a3f2fe3dbaac782d70b71
   let result = [];
   let keywords_array = keywords.toLowerCase().split(/[ ,]+/);
   console.log(keywords_array);
-
   // find all matching in senate
   let res = await fetch("/api/senate/members", {
               headers:{
@@ -138,8 +141,7 @@ const searchKeywords = async (keywords) => {
   console.log("result: " + result);
   return result;
 }
-
-const Searchbar = ({ setData, scrollToResult }) => {
+export const Searchbar = ({ setData, scrollToResult }) => {
   const initialSearchData = Object.freeze({
     keywords: "",
   });
