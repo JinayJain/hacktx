@@ -140,7 +140,7 @@ const searchKeywords = (keywords) => {
   console.log(result);
   return result;
 }
-const Searchbar = ({ setData }) => {
+const Searchbar = ({ setData, scrollToResult }) => {
   const initialSearchData = Object.freeze({
     keywords: "",
   });
@@ -162,8 +162,10 @@ const Searchbar = ({ setData }) => {
   const searchAndSetData = () => {
     let data = searchKeywords(formData.keywords);
     console.log(data);
-    console.log("setData: " + setData(data));
+    console.log("setData: " + setData());
     setData(data);
+    console.log("scrolltoresult: " + scrollToResult);
+    scrollToResult();
   }
   return (
     <>

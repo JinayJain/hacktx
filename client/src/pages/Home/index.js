@@ -36,7 +36,7 @@ const Home = () => {
         <div className="cover_section">
           <img id="logo" src={logo}/>
           <h1>The Politician Index needed to keep representatives accountable.</h1>
-          <Searchbar setData={setData}/>
+          <Searchbar setData={setData} scrollToResult={scrollToResult}/>
           <br/>
           <Row>
             <Button
