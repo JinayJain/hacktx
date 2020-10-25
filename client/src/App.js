@@ -4,14 +4,15 @@ import './App.css'
 import Home from './pages/Home'
 
 import { Switch, Redirect, Route, BrowserRouter as Router } from 'react-router-dom'
+import Profile from './pages/Profile'
 
 function App () {
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/test">
-            <div>yo yo yo o</div>
+          <Route path="/member">
+            <Profile />
           </Route>
           <Route path="/home">
             <Home />
