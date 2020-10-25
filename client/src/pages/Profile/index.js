@@ -12,6 +12,8 @@ import { Col } from 'antd';
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapComponent from "../../components/Map/MapComponent";
+import firebase from "firebase";
+import app from "../../base";
 import "./styles.css";
 import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
@@ -110,6 +112,7 @@ const ArticleCard = ({ article }) => (
 function Profile() {
   let { id } = useParams();
   const [member, setMember] = useState({});
+  const [ratings, setRatings] = useState(null);
 
   useEffect(() => {
     fetch(`/api/members/${id}`)
@@ -118,6 +121,15 @@ function Profile() {
         console.log(res);
         setMember(res);
       });
+
+    const db = app.database().ref().on('value', (snapshot) => {
+      const curRating = snapshot.val()['rating'];
+      if (!(id in curRating)) {}
+      else {
+         setRatings(curRating[id]); 
+      } 
+    })
+
   }, [id]);
 
   const US_BOUNDS = {
@@ -214,6 +226,49 @@ function Profile() {
           )}
         </div>
       </div>
+      <div>
+        <h2 style={{ textAlign: "center" }}>User Reliability Score</h2>
+        <div style={{ marginBottom: "20px" }}>
+          <div
+            style={{
+              width: "80%",
+              height: "10px",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              margin: "auto",
+              borderRadius: "3px",
+              position: "relative",
+            }}
+          >
+            {ratings && (
+              <div
+                style={{
+                  height: "30px",
+                  width: "30px",
+                  position: "absolute",
+                  backgroundColor: "#88cc54",
+                  borderRadius: "50%",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  left: ratings*10 + "%",
+                }}
+              ></div>
+            )}
+          </div>
+
+          {ratings && (
+            <h3 style={{ textAlign: "center", marginTop: "15px" }}>
+              This congressperson is considered {" "}
+              {ratings*10 + "%"} reliable according to user reviews.
+            </h3>
+          )}
+          {!ratings && (
+            <h3 style={{ textAlign: "center", marginTop: "15px" }}>
+              This congressperson has no user reviews.
+            </h3>
+          )}
+        </div>
+      </div>
+
       <Divider />
       <div>
         <h1>Voting History</h1>
