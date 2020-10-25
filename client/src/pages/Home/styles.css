@@ -71,6 +71,7 @@
 }
 
 .blueButton {
+    border: none;
     height: 50px;
     width: 20%;
     margin-top: 25px;
@@ -83,6 +84,7 @@ Button:hover {
         transform: scale(1.1);
 }
 .redButton {
+    border: none;
     height: 50px;
     width: 20%;
     margin-top: 25px;
