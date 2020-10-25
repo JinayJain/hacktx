@@ -49,7 +49,7 @@ const Member = ({id, name, image, state, district, party}) => {
 
     
     return (
-        <div className="member-card" size="small" style={{ width: 600, paddingTop: '0px', paddingBottom: '0px'}} onClick={()=>toProfile(name.replace(/\s/g, ''))}>
+        <div className="member-card" size="small" style={{ width: 400, paddingTop: '0px', paddingBottom: '0px'}} onClick={()=>toProfile(name.replace(/\s/g, ''))}>
             <div className={partytext}><img className="partyicon" src={parties[party]}></img><h1 className="text-padding">{name}</h1></div>
             <div className="card-body">
                 <img className="headshot" src={image}></img>

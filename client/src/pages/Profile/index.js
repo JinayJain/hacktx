@@ -79,8 +79,11 @@ const BillCard = ({ bill }) => {
     ) : (
       <QuestionCircleTwoTone className="voteIndicator" />
     );
-
+    console.log(bill);
   return (
+    
+    <a href={"https://www.congress.gov/search?q={%22congress%22:[%22116%22],%22source%22:%22all%22,%22search%22:%22"+bill.bill.bill_id +"%22}" }>
+
     <div className="billCard">
       <div>
         <h3>{bill.description}</h3>
@@ -88,6 +91,7 @@ const BillCard = ({ bill }) => {
       </div>
       <div>{voteIndicator}</div>
     </div>
+    </a>
   );
 };
 
