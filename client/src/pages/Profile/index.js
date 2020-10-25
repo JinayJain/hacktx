@@ -10,14 +10,11 @@ import {
 } from "@ant-design/icons";
 import { Slider, InputNumber, Row, Col, Button } from 'antd';
 import React, { useCallback, useEffect, useState } from "react";
-import { Col } from 'antd';
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MapComponent from "../../components/Map/MapComponent";
 import firebase from "firebase";
 import app from "../../base";
 import "./styles.css";
-import { TwitterTimelineEmbed } from 'react-twitter-embed';
 
 const IntegerStep = (props) => {
   const submitInput = useCallback(async (val, rating, times, id) => {
@@ -288,7 +285,7 @@ function Profile() {
                   borderRadius: "50%",
                   top: "50%",
                   transform: "translateY(-50%)",
-                  left: ratings*10 + "%",
+                  left: (ratings*10).toFixed(2) + "%",
                 }}
               ></div>
             )}
@@ -297,7 +294,7 @@ function Profile() {
           {ratings && (
             <h3 style={{ textAlign: "center", marginTop: "15px" }}>
               This congressperson is considered {" "}
-              {ratings*10 + "%"} reliable according to user reviews.
+              {(ratings*10).toFixed(2)+ "%"} reliable according to user reviews.
             </h3>
           )}
           {!ratings && (
