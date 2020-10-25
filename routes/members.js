@@ -6,14 +6,15 @@ let maxArticles = 5;
 
 // get senators
 api.get('https://api.propublica.org/congress/v1/116/senate/members.json').then(res => {
+  console.log("got senators");
   members = members.concat(res.data.results[0].members);
 })
 
 // get house members
 api.get('https://api.propublica.org/congress/v1/116/house/members.json').then(res => {
+  console.log("got house members");
   members = members.concat(res.data.results[0].members);
 })
-
 router.get('/', (req, res) => {
   res.json(members);
 });
