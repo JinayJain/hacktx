@@ -126,7 +126,7 @@ function Profile() {
       <div style={{display:"flex"}}>
         <img
           src={`https://theunitedstates.io/images/congress/450x550/${id}.jpg`}
-          alt="Chris Coons"
+          alt=""
           className="memberImage"
         />
         {member.state && (
@@ -141,7 +141,6 @@ function Profile() {
           />
         )}
       </div>
-      {member || <div><LoadingOutlined /></div>}
       <h1 className="memberName">
         {member.short_title} {member.first_name} {member.last_name}
       </h1>
