@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar'
 import Searchbar from '../../components/Searchbar'
 import './styles.css'
 import logo from '../../logo.svg'
+import Members from '../../components/Card/card';
 
 import { Layout } from 'antd';
 import { Button } from 'antd';
@@ -49,6 +50,9 @@ const Home = () => {
         </div>
         <div id="result_section" ref={resultRef}>
           <h1>Search Result</h1>
+            <Members
+            array = {[{"first":"Lamar","last":"Alexander","party":"I","state":"TN","hometown":"Maryville"}]}
+            />
         </div>
     </Content>
   )
