@@ -12,13 +12,22 @@
     padding-top: 10px;
 }
 .member-card:hover {
+  transform: scale(0.98, 0.98);
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.partyicon{
+    height: 30px;
+    float: left;
+    margin: 5px;
+
 }
 .card-body{
     display: flex;
+    padding: 10px;
 }
 .text-padding {
-    padding-left: 10px;
+    padding-left: 15px;
+    margin-bottom: 0px;
 }
 .member-container{
     display: grid;
@@ -29,10 +38,9 @@
     border-radius: 10px 10px 0px 0px;
     background-color: #AD0000;
     color: ghostwhite;
-
 }
 .headshot{
-    padding: 10px;
+    margin: 10px;
     height: 30%;
     width: 30%;
 
@@ -40,7 +48,7 @@
 .Democrat *{
     border-radius: 10px 10px 0px 0px;
     background-color: #002761;
-    color: white;
+    color: white;;
 }
 
 .Independent *{
