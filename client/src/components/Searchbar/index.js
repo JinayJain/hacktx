@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Input } from 'antd';
+import { Row, Input, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 import './styles.css'
@@ -23,7 +23,7 @@ const searchKeywords = (keywords) => {
                 data.forEach(member => {
                   // if keyword matches
                   if (member.party === "D") {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -32,7 +32,7 @@ const searchKeywords = (keywords) => {
                 data.forEach(member => {
                   // if keyword matches
                   if (member.party === "R") {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -41,7 +41,7 @@ const searchKeywords = (keywords) => {
                 data.forEach(member => {
                   // if keyword matches
                   if (member.party === "I") {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -65,7 +65,7 @@ const searchKeywords = (keywords) => {
                   });
                   
                   if (matches) {
-                    console.log(member);
+                    //console.log(member);
                     result.push(member);
                   }
                 });
@@ -73,7 +73,6 @@ const searchKeywords = (keywords) => {
             }
           });
         });
-    
     // find all matching in house
     let house = fetch("http://localhost:8080/api/house/members", {
         headers:{
@@ -88,7 +87,7 @@ const searchKeywords = (keywords) => {
             data.forEach(member => {
               // if keyword matches
               if (member.party === "D") {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -97,7 +96,7 @@ const searchKeywords = (keywords) => {
             data.forEach(member => {
               // if keyword matches
               if (member.party === "R") {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -106,7 +105,7 @@ const searchKeywords = (keywords) => {
             data.forEach(member => {
               // if keyword matches
               if (member.party === "I") {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -130,7 +129,7 @@ const searchKeywords = (keywords) => {
               });
               
               if (matches) {
-                console.log(member);
+                //console.log(member);
                 result.push(member);
               }
             });
@@ -138,17 +137,14 @@ const searchKeywords = (keywords) => {
         }
       });
     });
-  console.log(keywords);
+  console.log(result);
+  return result;
 }
-
-const Searchbar = () => {
-
+const Searchbar = ({ setData }) => {
   const initialSearchData = Object.freeze({
     keywords: "",
   });
-
   const [formData, updateFormData] = React.useState(initialSearchData);
-
   const handleChange = (event) => {
     console.log("EVENT: "+ event);
     updateFormData({
@@ -157,27 +153,39 @@ const Searchbar = () => {
         keywords: document.getElementById("keywords").value.trim()
       });
   }
-
   const handleKeyDown = (event) => {
     console.log(event);
     if (event.key === 'Enter') {
-      searchKeywords(formData.keywords);
+      searchAndSetData();
     }
   }
-
+  const searchAndSetData = () => {
+    let data = searchKeywords(formData.keywords);
+    console.log(data);
+    console.log("setData: " + setData(data));
+    setData(data);
+  }
   return (
-    <Input.Search 
-      className="keywords"
-      id="keywords"
-      size="large"
-      placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
-      allowClear 
-      style={{ width: '70%' }} 
-      onKeyDown={handleKeyDown}
-      onChange={(e) => handleChange(e.target.value)}
-      suffix={<SearchOutlined/>}
-    />
+    <>
+    <Row>
+    <Input 
+        className="keywords"
+        id="keywords"
+        size="large"
+        placeholder="SEARCH BY KEYWORDS (NAME, LOCATION, PARTY, HOMETOWN, ETC)" 
+        allowClear 
+        style={{ width: '60%' }} 
+        onKeyDown={handleKeyDown}
+        onChange={(e) => handleChange(e.target.value)}
+      />
+      <Button 
+        //on click here
+        style={{ height: '75px'}}
+      >
+        <SearchOutlined style={{ fontSize: '250%', color: '#002761'}}/>
+      </Button>
+    </Row>
+    </>
   )
 }
-
 export default Searchbar

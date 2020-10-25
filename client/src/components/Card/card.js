@@ -6,8 +6,10 @@ import { useHistory } from "react-router-dom";
 import donkey from "./Democrat.png";
 import elephant from "./Republican.png";
 
-function Members(array) {
-    let [members, setMembers] = useState(array);    
+function Members({array}) {
+    console.log("array e:" + array);
+    let members = array;
+    //let [members, setMembers] = useState(array);
     let imagelink = "https://theunitedstates.io/images/congress/450x550/C001088.jpg"
     let returnParty;
     let party;
@@ -28,7 +30,6 @@ function Members(array) {
                 return (
                     <>
                         <Member
-                            image={imagelink}
                             name={data.first + " " + data.last}
                             state={data.state}
                             district={data.district}

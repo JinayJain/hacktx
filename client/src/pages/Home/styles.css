@@ -1,23 +1,29 @@
+.keywords {
+    height: 75px;
+}
+
 .cover_section {
-    width: 100%;
-    height: 900px;
+    width: 100vw;
+    height: 100vh;
     padding: 50px;
-    background-image: url('./cover.png');
+    background-size: 100vw auto;
+    background-image: url('cover.jpg');
 }
-.info_section {
-    width: 100%;
-    height: 900px;
+
+#info_section {
+    width: 100vw;
+    height: 100vh;
     padding: 50px;
-    background-color: #C4C4C4;
+    background-color: #002761;
 }
-.map_section {
-    width: 100%;
-    height: 900px;
+#map_section {
+    width: 100vw;
+    height: 100vh;
     padding: 50px;
     background-color: #A9A9A9;
 }
 #result_section {
-    width: 100%;
+    width: 100vw;
     height: auto;
     padding: 50px;
     background-color: #EFEFEF;
@@ -27,11 +33,14 @@
 }
 .blueButton {
     height: 50px;
-    width: 30%;
+    width: 20%;
     margin-top: 25px;
     margin-right: 25px;
     background-color: #002761;
 }
+.blueButton:hover { 
+    background-color: #002761;
+} 
 Button:hover {
         -webkit-transform: scale(1.1);
         -ms-transform: scale(1.1);
@@ -39,8 +48,11 @@ Button:hover {
 }
 .redButton {
     height: 50px;
-    width: 30%;
+    width: 20%;
     margin-top: 25px;
     margin-right: 25px;
     background-color: #AD0000;
 }
+.redButton:hover { 
+    background-color: #AD0000;
+} 
