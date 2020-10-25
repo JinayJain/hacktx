@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../logo.svg';
 import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css'
+import Vote from '../../components/Vote'
 import Searchbar from '../../components/Searchbar'
 import MapComponent from '../../components/Map/MapComponent'
 
@@ -29,7 +30,8 @@ const Home = () => {
 
   return (
     <Content>
-        <div className="cover_section">
+        <Vote/>
+        <div id="cover_section">
           <img id="logo" src={logo}/>
           <h1>The Politician Index needed to keep representatives accountable.</h1>
           <Searchbar setData={setData} scrollToResult={scrollToResult}/>
@@ -52,14 +54,17 @@ const Home = () => {
         <div id="info_section">
         <div className="right">
             <h1>Politicians! Gotta Catch Their Crimes!</h1>
-            <p>With the current divided government we have come to known today, social policies and reform have never been more important.
-              The fact that many of our politicians that we choose lie to the general public about their actions makes the situation even worse. 
-              As it currently stands, there is no easy way to keep track of what politicians are doing in the House and the Senate. Until now!
-              We present to you Polídex! Drawing inspiration from the Pokédex, Polídex aims to track all the actions of politicians in office
-              so you can stay informed!
+            <p>With the divided government we have come to known today, social policies and reform have never been more important.
+              The fact that many of our politicians that we choose to lie to the general public about their actions makes the situation even worse. 
+              <b> As it currently stands, there is no easy way to keep track of what politicians are doing in the House and the Senate. . . until now.</b>
+            </p>
+            <p>
+              Introducing Polídex! Drawing inspiration from the Pokédex, Polídex aims to track all the actions of politicians in office
+              so you can stay informed, combatting <b>corruption</b> and <b>misinformation</b>.
             </p>
           </div>
           <div className="left">
+            <br/><br/>
             <img src={other_logo} />
             <h5>By Rights & Democracy: Vermont</h5>
           </div>

@@ -1,4 +1,4 @@
-.cover_section {
+#cover_section {
     width: 100vw;
     height: 100vh;
     padding: 50px;
@@ -11,6 +11,9 @@
     padding: 50px;
     background-color: #002761;
     overflow:auto; 
+    box-shadow: 0 6px 14px 0 rgba(0, 0, 0, 0.2), 0 16px 20px 0 rgba(0, 0, 0, 0.19);
+    position: relative;
+    z-index: 9;
 }
 
 #info_section .left {
@@ -38,6 +41,11 @@
     width: 60%;
 }
 
+#info_section .left:hover img {
+    transition: 0.9s;
+    transform: rotateY(180deg);
+}
+
 #info_section .right h1 {
     color: white;
     font-size: 50px;
@@ -46,7 +54,7 @@
 
 #info_section .right p {
     color: white;
-    font-size: 35px;
+    font-size: 25px;
     width: 90%;
 }
 
