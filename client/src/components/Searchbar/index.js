@@ -137,7 +137,7 @@ const searchKeywords = (keywords) => {
         }
       });
     });
-  console.log(result);
+  console.log("result: " + result);
   return result;
 }
 const Searchbar = ({ setData, scrollToResult }) => {
@@ -181,7 +181,7 @@ const Searchbar = ({ setData, scrollToResult }) => {
         onChange={(e) => handleChange(e.target.value)}
       />
       <Button 
-        //on click here
+        onClick={searchAndSetData}
         style={{ height: '75px'}}
       >
         <SearchOutlined style={{ fontSize: '250%', color: '#002761'}}/>
