@@ -7,9 +7,12 @@ import {
   QuestionCircleTwoTone,
   ReadOutlined,
   TwitterSquareFilled,
+  ArrowLeftOutlined
 } from "@ant-design/icons";
-import { Col } from 'antd';
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import { Col, Menu } from 'antd';
+import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import MapComponent from "../../components/Map/MapComponent";
 import firebase from "firebase";
@@ -141,6 +144,14 @@ function Profile() {
 
   return (
     <div className="profileContainer">
+      <Menu mode="horizontal">
+          <Link to="/home">
+            <Menu.Item key="back" icon={<ArrowLeftOutlined />}>
+              Back
+            </Menu.Item>
+          </Link>
+        </Menu>
+        <br/>
       <div style={{ display: "flex" }}>
         <img
           src={`https://theunitedstates.io/images/congress/450x550/${id}.jpg`}
