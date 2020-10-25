@@ -1,7 +1,3 @@
-.keywords {
-    height: 75px;
-}
-
 .cover_section {
     width: 100vw;
     height: 100vh;
@@ -71,6 +67,7 @@
 }
 
 .blueButton {
+    border: none;
     height: 50px;
     width: 20%;
     margin-top: 25px;
@@ -83,6 +80,7 @@ Button:hover {
         transform: scale(1.1);
 }
 .redButton {
+    border: none;
     height: 50px;
     width: 20%;
     margin-top: 25px;

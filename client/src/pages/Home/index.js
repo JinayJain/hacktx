@@ -2,14 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../logo.svg';
 import other_logo from './rightsdemocracy_vermont.png';
 import './styles.css'
-import Members from '../../components/Card/card'
 import Searchbar from '../../components/Searchbar'
 import MapComponent from '../../components/Map/MapComponent'
 
-import { Layout } from 'antd';
-import { Button } from 'antd';
-import { Row, Col } from 'antd';
-
+import { Layout, Row, Col, Button } from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 
 const Home = () => {
