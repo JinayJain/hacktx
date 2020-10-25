@@ -146,7 +146,7 @@ function Profile() {
     <div className="profileContainer">
       <Menu mode="horizontal">
           <Link to="/home">
-            <Menu.Item key="back" icon={<ArrowLeftOutlined />}>
+            <Menu.Item key="back" size="large" icon={<ArrowLeftOutlined />}>
               Back
             </Menu.Item>
           </Link>
