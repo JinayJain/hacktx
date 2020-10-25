@@ -188,7 +188,7 @@ const MapComponent = (props) => {
                 {members.filter(val => {
                   return val.state === states_abbrev[key]}).map(val => {
                     return <>
-                    <Link to={`/members/${val.id}`}><h2>{val.last_name + ", " + val.first_name}: {val.short_title}</h2></Link>
+                    <Link to={`/members/${val.id}`}><h2>({val.party + ") " + val.last_name + ", " + val.first_name}: {val.short_title}</h2></Link>
                     </>;
                   })}
               </div>
