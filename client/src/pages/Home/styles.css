@@ -3,7 +3,7 @@
     height: 100vh;
     padding: 50px;
     background-size: 100vw auto;
-    background-image: url('cover.jpg');
+    background-image: url('cover.png');
 }
 body{
     overflow-x: hidden;
