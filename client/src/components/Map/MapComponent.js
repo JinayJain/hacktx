@@ -176,7 +176,7 @@ const MapComponent = (props) => {
         center={center}
         zoom={defaultZoom}
       >
-            
+      {/* test */}
       {Object.keys(markerPosns).map((key, index) => {
         const curPos = {lat: parseFloat(markerPosns[key][0]), lng: parseFloat(markerPosns[key][1])};
         return (
